@@ -8,6 +8,74 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="container">
+      <form class="form">
+        <div class="card card__front">
+          <img src="image card__holo" alt="card holo" />
+          <img src="image card__logo" alt="card logo" />
+          <span class="span card__number">1234 5678 9012 3456</span>
+          <span class="span card__owner">John Doe</span>
+          <span class="span card__expiration">10/23</span>
+        </div>
+        <div class="card card__back" style="display: none;">
+          <span class="span card__blackbar"></span>
+          <span class="span card__cvv">CVV</span>
+          <span class="span card__cvv-code">098</span>
+          <img class="image card__logo" src="" alt="card logo" />
+        </div>
+        <label class="label form__label" for="number">Card Number</label>
+        <input
+          class="input form__input"
+          name="number"
+          type="text"
+          placeholder="credit card number"
+        />
+        <label class="form__label" for="owner"></label>
+        <input
+          class="input form__input"
+          name="owner"
+          type="text"
+          placeholder="credit card owner"
+        />
+        <select
+          class="select form__select"
+          name="expiration-month"
+          id="expiration-month"
+        >
+          <option class="option form__select__option" value="01">01</option>
+          <option class="option form__select__option" value="02">02</option>
+          <option class="option form__select__option" value="03">03</option>
+          <option class="option form__select__option" value="04">04</option>
+          <option class="option form__select__option" value="05">05</option>
+          <option class="option form__select__option" value="06">06</option>
+          <option class="option form__select__option" value="07">07</option>
+          <option class="option form__select__option" value="08">08</option>
+          <option class="option form__select__option" value="09">09</option>
+          <option class="option form__select__option" value="10">10</option>
+          <option class="option form__select__option" value="11">11</option>
+          <option class="option form__select__option" value="12">12</option>
+        </select>
+        <select name="expiration-year" id="expiration-year">
+          <option class="option form__select__option" value="2019">2019</option>
+          <option class="option form__select__option" value="2020">2020</option>
+          <option class="option form__select__option" value="2021">2021</option>
+          <option class="option form__select__option" value="2022">2022</option>
+          <option class="option form__select__option" value="2023">2023</option>
+          <option class="option form__select__option" value="2024">2024</option>
+          <option class="option form__select__option" value="2025">2025</option>
+          <option class="option form__select__option" value="2026">2026</option>
+          <option class="option form__select__option" value="2027">2027</option>
+          <option class="option form__select__option" value="2028">2028</option>
+          <option class="option form__select__option" value="2029">2029</option>
+          <option class="option form__select__option" value="2030">2030</option>
+        </select>
+        <label class="label form__label" for="cvv">CVV</label>
+        <input class="input form__input" type="text" placeholder="cvv" />
+        <button class="button form__button__submit" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
     <script src="./app.js"></script>
   </body>
 </html>
