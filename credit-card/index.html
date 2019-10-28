@@ -5,17 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Your credit card</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="container">
       <form class="form">
         <div class="card card__front">
-          <img src="image card__holo" alt="card holo" />
-          <img src="image card__logo" alt="card logo" />
-          <span class="span card__number">1234 5678 9012 3456</span>
-          <span class="span card__owner">John Doe</span>
-          <span class="span card__expiration">10/23</span>
+          <div class="wrapper card__front__image__wrapper">
+            <img
+              class="image card__front__image__wrapper__holo"
+              src="http://www.holosec.co.uk/img/design1/silver1.png"
+              alt="card holo"
+            />
+            <img
+              class="image card__front__image__wrapper__logo"
+              src="https://cdn.imgbin.com/2/7/22/imgbin-mastercard-logo-credit-card-visa-brand-mastercard-1uhrQsSsBGxbgrPHLTHGeC0A2.jpg"
+              alt="card logo"
+            />
+          </div>
+          <span class="span card__front__number">#### #### #### ####</span>
+          <div class="card__front__date__wrapper">
+            <span class="span card__front__date__wrapper__owner">John Doe</span>
+            <span class="span card__front__date__wrapper__expiration"
+              >10/23</span
+            >
+          </div>
         </div>
         <div class="card card__back" style="display: none;">
           <span class="span card__blackbar"></span>
