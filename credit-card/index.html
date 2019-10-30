@@ -27,9 +27,13 @@
               alt="card logo"
             />
           </div>
-          <span class="span card__front__number">#### #### #### ####</span>
+          <span class="span card__front__number" id="card-number"
+            >0000 0000 0000 0000</span
+          >
           <div class="card__front__date__wrapper">
-            <span class="span card__front__date__wrapper__owner">John Doe</span>
+            <span class="span card__front__date__wrapper__owner" id="card-owner"
+              >John Doe</span
+            >
             <span class="span card__front__date__wrapper__expiration"
               >10/23</span
             >
@@ -44,11 +48,23 @@
         <label class="label form__item form__label" for="number"
           >Card Number</label
         >
-        <input class="input form__item form__input" name="number" type="text" />
+        <input
+          class="input form__item form__input"
+          name="number"
+          type="text"
+          id="card-number-input"
+          maxlength="16"
+        />
         <label class="label form__item form__label" for="owner"
           >Card name</label
         >
-        <input class="input form__item form__input" name="owner" type="text" />
+        <input
+          class="input form__item form__input"
+          name="owner"
+          type="text"
+          id="card-owner-input"
+          maxlength="30"
+        />
         <div class="expiration__container">
           <div class="expiration">
             <label class="label form__item form__label" for="expiration-month"

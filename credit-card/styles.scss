@@ -11,6 +11,7 @@
   align-items: center;
   height: 100vh;
   .form {
+    flex-wrap: wrap;
     .expiration__container {
       display: flex;
       width: 100%;
