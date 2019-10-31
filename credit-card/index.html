@@ -34,7 +34,9 @@
             <span class="span card__front__date__wrapper__owner" id="card-owner"
               >John Doe</span
             >
-            <span class="span card__front__date__wrapper__expiration"
+            <span
+              class="span card__front__date__wrapper__expiration"
+              id="card-expiration-span"
               >10/23</span
             >
           </div>
@@ -75,7 +77,11 @@
               name="expiration-month"
               id="expiration-month"
             >
-              <option class="option form__select__option" value="month"
+              <option
+                disabled
+                selected
+                class="option form__select__option"
+                value="month"
                 >month</option
               >
               <option class="option form__select__option" value="01">01</option>
@@ -98,47 +104,55 @@
               name="expiration-year"
               id="expiration-year"
             >
-              <option class="option form__select__option" value="2019"
+              <option disabled selected class="option form__select__option"
+                >year</option
+              >
+              <option class="option form__select__option" value="19"
                 >2019</option
               >
-              <option class="option form__select__option" value="2020"
+              <option class="option form__select__option" value="20"
                 >2020</option
               >
-              <option class="option form__select__option" value="2021"
+              <option class="option form__select__option" value="21"
                 >2021</option
               >
-              <option class="option form__select__option" value="2022"
+              <option class="option form__select__option" value="22"
                 >2022</option
               >
-              <option class="option form__select__option" value="2023"
+              <option class="option form__select__option" value="23"
                 >2023</option
               >
-              <option class="option form__select__option" value="2024"
+              <option class="option form__select__option" value="24"
                 >2024</option
               >
-              <option class="option form__select__option" value="2025"
+              <option class="option form__select__option" value="25"
                 >2025</option
               >
-              <option class="option form__select__option" value="2026"
+              <option class="option form__select__option" value="26"
                 >2026</option
               >
-              <option class="option form__select__option" value="2027"
+              <option class="option form__select__option" value="27"
                 >2027</option
               >
-              <option class="option form__select__option" value="2028"
+              <option class="option form__select__option" value="28"
                 >2028</option
               >
-              <option class="option form__select__option" value="2029"
+              <option class="option form__select__option" value="29"
                 >2029</option
               >
-              <option class="option form__select__option" value="2030"
+              <option class="option form__select__option" value="30"
                 >2030</option
               >
             </select>
           </div>
           <div class="expiration">
             <label class="label form__item form__label" for="cvv">CVV</label>
-            <input class="input form__item form__input" type="text" />
+            <input
+              class="input form__item form__input"
+              type="text"
+              id="cvv-input"
+              maxlength="3"
+            />
           </div>
         </div>
         <button class="button form__item form__button__submit" type="submit">

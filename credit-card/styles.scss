@@ -49,6 +49,7 @@
       border: 1px solid black;
       border-radius: 12px;
       color: white;
+      font-size: 24px;
       transition: 0.3s ease-in;
       box-shadow: 0px 10px 30px -10px rgba(0, 0, 0, 0.75);
 
@@ -156,6 +157,7 @@
           border: 1px solid white;
           text-align: center;
           font-size: 2rem;
+          min-height: 45px;
         }
         &__image__wrapper,
         &__date__wrapper {

@@ -43,3 +43,16 @@ const cardOwnerInput = document.querySelector("#card-owner-input");
 cardOwnerInput.addEventListener("input", () => {
   handleInputChange(cardOwnerInput, cardOwner);
 });
+
+const selects = [...document.querySelectorAll(".form__select")];
+
+const setExpirationDate = () => {
+  const span = document.querySelector("#card-expiration-span");
+  const month = selects[0].value;
+  const year = selects[1].value;
+  if (!isNaN(month) && !isNaN(year)) {
+    span.textContent = `${month}/${year}`;
+  }
+};
+
+selects.forEach(item => item.addEventListener("change", setExpirationDate));

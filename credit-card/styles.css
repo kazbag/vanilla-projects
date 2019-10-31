@@ -85,6 +85,7 @@
   border: 1px solid black;
   border-radius: 12px;
   color: white;
+  font-size: 24px;
   -webkit-transition: 0.3s ease-in;
   transition: 0.3s ease-in;
   -webkit-box-shadow: 0px 10px 30px -10px rgba(0, 0, 0, 0.75);
@@ -160,6 +161,7 @@
   border: 1px solid white;
   text-align: center;
   font-size: 2rem;
+  min-height: 45px;
 }
 
 .container .form .card__front__image__wrapper, .container .form .card__front__date__wrapper {
