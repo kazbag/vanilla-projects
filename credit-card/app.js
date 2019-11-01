@@ -56,3 +56,25 @@ const setExpirationDate = () => {
 };
 
 selects.forEach(item => item.addEventListener("change", setExpirationDate));
+
+const cardFront = document.querySelector(".card__front");
+const cardBack = document.querySelector(".card__back");
+
+const showBackOfCard = () => {
+  cardBack.classList.remove("rotated");
+  cardFront.classList.add("rotated");
+};
+const hideBackOfCard = () => {
+  cardBack.classList.add("rotated");
+  cardFront.classList.remove("rotated");
+};
+document.querySelector("#cvv-input").addEventListener("focus", showBackOfCard);
+document.querySelector("#cvv-input").addEventListener("blur", hideBackOfCard);
+
+const cvvSpan = document.querySelector("#cvv-code");
+const cvvInput = document.querySelector("#cvv-input");
+const handleCVV = e => {
+  cvvSpan.textContent = e.target.value;
+};
+
+cvvInput.addEventListener("input", handleCVV);

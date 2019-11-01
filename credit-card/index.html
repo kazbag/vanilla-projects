@@ -14,38 +14,43 @@
   <body>
     <div class="container">
       <form class="form">
-        <div class="card card__front">
-          <div class="wrapper card__front__image__wrapper">
-            <img
-              class="image card__front__image__wrapper__holo"
-              src="http://www.holosec.co.uk/img/design1/silver1.png"
-              alt="card holo"
-            />
-            <img
-              class="image card__front__image__wrapper__logo"
-              src="https://cdn.imgbin.com/2/7/22/imgbin-mastercard-logo-credit-card-visa-brand-mastercard-1uhrQsSsBGxbgrPHLTHGeC0A2.jpg"
-              alt="card logo"
-            />
-          </div>
-          <span class="span card__front__number" id="card-number"
-            >0000 0000 0000 0000</span
-          >
-          <div class="card__front__date__wrapper">
-            <span class="span card__front__date__wrapper__owner" id="card-owner"
-              >John Doe</span
+        <div class="card-wrapper">
+          <div class="card card__front">
+            <div class="wrapper card__front__image__wrapper">
+              <img
+                class="image card__front__image__wrapper__holo"
+                src="http://www.holosec.co.uk/img/design1/silver1.png"
+                alt="card holo"
+              />
+              <img
+                class="image card__front__image__wrapper__logo"
+                src="https://cdn.imgbin.com/2/7/22/imgbin-mastercard-logo-credit-card-visa-brand-mastercard-1uhrQsSsBGxbgrPHLTHGeC0A2.jpg"
+                alt="card logo"
+              />
+            </div>
+            <span class="span card__front__number" id="card-number"
+              >0000 0000 0000 0000</span
             >
-            <span
-              class="span card__front__date__wrapper__expiration"
-              id="card-expiration-span"
-              >10/23</span
-            >
+            <div class="card__front__date__wrapper">
+              <span
+                class="span card__front__date__wrapper__owner"
+                id="card-owner"
+                >John Doe</span
+              >
+              <span
+                class="span card__front__date__wrapper__expiration"
+                id="card-expiration-span"
+                >10/23</span
+              >
+            </div>
           </div>
-        </div>
-        <div class="card card__back" style="display: none;">
-          <span class="span card__blackbar"></span>
-          <span class="span card__cvv">CVV</span>
-          <span class="span card__cvv-code">098</span>
-          <img class="image card__logo" src="" alt="card logo" />
+
+          <div class="card card__back rotated">
+            <span class="span card__blackbar"></span>
+            <span class="span card__cvv">CVV</span>
+            <span class="span card__cvv-code" id="cvv-code">098</span>
+            <img class="image card__logo" src="" alt="card logo" />
+          </div>
         </div>
         <label class="label form__item form__label" for="number"
           >Card Number</label
@@ -98,6 +103,7 @@
               <option class="option form__select__option" value="12">12</option>
             </select>
           </div>
+
           <div class="expiration">
             <select
               class="select  form__item form__select inline"
