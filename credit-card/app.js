@@ -78,3 +78,39 @@ const handleCVV = e => {
 };
 
 cvvInput.addEventListener("input", handleCVV);
+
+setInputFilter(cvvInput, function(value) {
+  cvvSpan.textContent = value
+    .replace(/(\d{4})/g, "$1 ")
+    .replace(/(^\s+|\s+$)/, "");
+  return /^\d*?\d*$/.test(value);
+});
+
+const showModal = () => {
+  const el = document.createElement("span");
+  el.classList.add("modal");
+  el.textContent = "that's no 'back to the past'";
+  document.body.appendChild(el);
+  setTimeout(() => {
+    el.remove();
+  }, 1500);
+};
+
+const validateDate = () => {
+  const monthNow = new Date().getMonth();
+  const yearFull = new Date().getFullYear().toString();
+  const yearNow = yearFull.slice(-2);
+  const expirationMonth = document.querySelector("#expiration-month");
+  const expirationYear = document.querySelector("#expiration-year");
+  const dateSpan = document.querySelector("#card-expiration-span");
+
+  if (expirationMonth.value <= monthNow && yearNow >= expirationYear.value) {
+    showModal();
+    dateSpan.textContent = `${monthNow + 1}/${yearNow}`;
+    expirationMonth.value = monthNow + 1;
+  }
+};
+
+[...document.querySelectorAll(".form__select")].forEach(item =>
+  item.addEventListener("change", validateDate)
+);

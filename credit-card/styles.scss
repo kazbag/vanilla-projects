@@ -215,3 +215,22 @@
   width: 50px;
   height: 30px;
 }
+
+.modal {
+  width: 500px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -250px;
+  background-color: dodgerblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 24px;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  color: white;
+}
