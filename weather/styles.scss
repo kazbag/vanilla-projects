@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+$light: #e8e9eb;
+$dark: #313638;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: $light;
+  .searchbox {
+    color: $dark;
+  }
+}
