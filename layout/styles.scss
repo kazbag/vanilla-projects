@@ -3,3 +3,80 @@
   padding: 0;
   font-family: "Ubuntu", sans-serif;
 }
+$dark: #2a2b2a;
+$light: #f8f4e3;
+$primary: #e5446d;
+$secondary: #ff8966;
+.header {
+  color: $light;
+  height: 100vh;
+  position: relative;
+
+  &-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    height: 100%;
+    line-height: 2;
+    text-align: center;
+    width: 100%;
+    .title {
+      font-size: 20px;
+    }
+    .subtitle {
+      font-size: 16px;
+    }
+    .cta-button {
+      border: 1px solid $secondary;
+      color: $light;
+      text-decoration: none;
+      margin-top: 12px;
+      padding: 5px 15px;
+      border-radius: 8px;
+      background: $light;
+      color: $dark;
+      transition: 0.3s ease-in-out;
+      color: $light;
+      border-color: $dark;
+      background: $primary;
+      &:hover {
+        background: $secondary;
+        border-color: $dark;
+      }
+    }
+  }
+  canvas {
+    background: $dark;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  .navbar {
+    background: rgba($dark, 0.85);
+    width: 100%;
+    position: fixed;
+    .menu {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      &-item {
+        text-align: center;
+        list-style: none;
+        display: inline-block;
+        width: 100%;
+        margin: 8px;
+        &-link {
+          display: inline-block;
+          text-decoration: none;
+          color: $primary;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

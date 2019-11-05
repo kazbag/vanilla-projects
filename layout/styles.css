@@ -3,4 +3,100 @@
   padding: 0;
   font-family: "Ubuntu", sans-serif;
 }
+
+.header {
+  color: #f8f4e3;
+  height: 100vh;
+  position: relative;
+}
+
+.header-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  height: 100%;
+  line-height: 2;
+  text-align: center;
+  width: 100%;
+}
+
+.header-info .title {
+  font-size: 20px;
+}
+
+.header-info .subtitle {
+  font-size: 16px;
+}
+
+.header-info .cta-button {
+  border: 1px solid #ff8966;
+  color: #f8f4e3;
+  text-decoration: none;
+  margin-top: 12px;
+  padding: 5px 15px;
+  border-radius: 8px;
+  background: #f8f4e3;
+  color: #2a2b2a;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  color: #f8f4e3;
+  border-color: #2a2b2a;
+  background: #e5446d;
+}
+
+.header-info .cta-button:hover {
+  background: #ff8966;
+  border-color: #2a2b2a;
+}
+
+.header canvas {
+  background: #2a2b2a;
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.header .navbar {
+  background: rgba(42, 43, 42, 0.85);
+  width: 100%;
+  position: fixed;
+}
+
+.header .navbar .menu {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.header .navbar .menu-item {
+  text-align: center;
+  list-style: none;
+  display: inline-block;
+  width: 100%;
+  margin: 8px;
+}
+
+.header .navbar .menu-item-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #e5446d;
+  width: 100%;
+}
 /*# sourceMappingURL=styles.css.map */
