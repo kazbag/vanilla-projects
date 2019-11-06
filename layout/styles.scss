@@ -60,16 +60,37 @@ $secondary: #ff8966;
     background: rgba($dark, 0.85);
     width: 100%;
     position: fixed;
+    z-index: 100;
+    overflow: hidden;
+    .hamburger {
+      display: flex;
+      z-index: 100000;
+      flex-direction: column;
+      align-self: flex-end;
+      margin-right: 24px;
+      margin-top: 24px;
+      span {
+        display: inline-block;
+        border: 1px solid $primary;
+        margin: 5px;
+        width: 35px;
+      }
+    }
     .menu {
+      transition: 1.3s;
+      max-height: 0;
+      flex-direction: column;
+      z-index: 1000;
       list-style: none;
+      background: red;
       display: flex;
       justify-content: space-around;
       &-item {
         text-align: center;
         list-style: none;
-        display: inline-block;
         width: 100%;
         margin: 8px;
+        display: none;
         &-link {
           display: inline-block;
           text-decoration: none;
@@ -79,4 +100,12 @@ $secondary: #ff8966;
       }
     }
   }
+  .visible {
+    max-height: 100vh !important;
+  }
+  .disp {
+    display: inline-block !important;
+  }
 }
+
+//
