@@ -19,6 +19,8 @@
     />
     <meta name="author" content="Kazimierz Bagrowski" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://kit.fontawesome.com/11b25bf1de.js" crossorigin="anonymous"></script>
+
   </head>
   <body>
     <header class="header">
@@ -112,19 +114,27 @@
       <h3 class="subtitle">Skontaktuj się ze mną.</h3>
       <ul class="contact-container">
         <li class="contact-item">
-          <a class="contact-item-link" href="tel:+48667952307">667 952 307</a>
-          <a
-            class="contact-item-link"
-            href="mailto:bagrowskikazimierz@gmail.com"
-            >bagrowskikazimierz@gmail.com</a
-          >
-          <a
+            <i class="fas fa-phone-square"></i>
+          <a rel="noopener noreferrer" target="_blank" class="contact-item-link" href="tel:+48667952307"> 667 952 307</a>
+        </li>
+        <li class="contact-item">
+          <i class="fas fa-envelope-square"></i>
+          <a rel="noopener noreferrer" target="_blank"
+          class="contact-item-link"
+          href="mailto:bagrowskikazimierz@gmail.com"
+          >bagrowskikazimierz@gmail.com</a
+        >
+        </li>
+        <li class="contact-item">
+            <i class="fab fa-facebook-square"></i>
+          <a rel="noopener noreferrer" target="_blank"
             class="contact-item-link"
             href="https://www.facebook.com/kazimierz.bagrowski"
-            >Facebook</a
+            >kazimierz.bagrowski</a
           >
         </li>
       </ul>
+      <h3 class="title">Lub napisz tutaj</h3>
       <form action="" class="contact-form">
         <input type="text" class="input" placeholder="Twoje imię" />
         <input
@@ -132,8 +142,8 @@
           class="input"
           placeholder="Twój email, lub numer telefonu"
         />
-        <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
-        <button>Wyślij</button>
+        <textarea class="input" placeholder="wpisz wiadomość" name="textarea" id="textarea"  cols="30" rows="10"></textarea>
+        <button class="button">Wyślij</button>
       </form>
     </section>
     <script src="./assets/particles.js"></script>
