@@ -1,3 +1,6 @@
+$small: 600px;
+$medium: 960px;
+$large: 1300px;
 * {
   margin: 0;
   padding: 0;
@@ -23,11 +26,20 @@ $secondary: #ff8966;
     line-height: 2;
     text-align: center;
     width: 100%;
+    @media screen and(min-width: $small) {
+      line-height: 3;
+    }
     .title {
       font-size: 20px;
+      @media screen and(min-width: $small) {
+        font-size: 32px;
+      }
     }
     .subtitle {
       font-size: 16px;
+      @media screen and(min-width: $small) {
+        font-size: 20px;
+      }
     }
     .cta-button {
       border: 1px solid $secondary;
@@ -42,6 +54,9 @@ $secondary: #ff8966;
       color: $light;
       border-color: $dark;
       background: $primary;
+      @media screen and(min-width: $small) {
+        font-size: 24px;
+      }
       &:hover {
         background: $secondary;
         border-color: $dark;
@@ -118,6 +133,10 @@ $secondary: #ff8966;
 //
 
 .section {
+  @media screen and(min-width: $small) {
+    padding-left: 20%;
+    padding-right: 20%;
+  }
   color: $light;
   line-height: 2;
   padding: 0 5px;
@@ -154,7 +173,17 @@ $secondary: #ff8966;
   .cards-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media screen and(min-width: $medium) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
     .card {
+      @media screen and(min-width: $medium) {
+        width: 40%;
+        margin: 5px 10px;
+      }
       box-shadow: 0px 10px 25px -10px rgba(0, 0, 0, 0.75);
       border-radius: 12px;
       margin-top: 12px;
@@ -225,6 +254,11 @@ $secondary: #ff8966;
   background: $dark;
   &-me-description {
     text-indent: 12px;
+
+    @media screen and(min-width:$medium) {
+      font-size: 20px;
+      text-indent: 0;
+    }
   }
 }
 .contact {
@@ -233,18 +267,24 @@ $secondary: #ff8966;
   }
   .title {
     &:last-of-type {
-      margin: 24px 0;
+      padding: 24px 0;
     }
   }
   &-container {
     background: lighten($dark, 10%);
     display: flex;
     flex-direction: column;
+    border-radius: 12px;
+    @media screen and(min-width: $medium) {
+      flex-direction: row;
+      justify-content: space-around;
+    }
   }
   &-item {
     display: flex;
     align-items: center;
-    margin-top: 24px;
+    margin: 24px 0;
+
     i {
       font-size: 2rem;
       background-color: $dark;
@@ -263,6 +303,10 @@ $secondary: #ff8966;
     &-link {
       color: $light;
       text-decoration: none;
+      transition: color 0.3s;
+      &:hover {
+        color: $primary;
+      }
     }
   }
   &-form {
