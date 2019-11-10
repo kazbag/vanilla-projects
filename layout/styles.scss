@@ -290,6 +290,9 @@ $secondary: #ff8966;
       background-color: $dark;
       border: 1px solid $dark;
       margin-right: 24px;
+      @media screen and(min-width: $medium) {
+        margin-right: 2px;
+      }
     }
     .fa-phone-square {
       color: lightgreen;

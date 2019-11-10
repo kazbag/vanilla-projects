@@ -395,6 +395,12 @@
   margin-right: 24px;
 }
 
+@media screen and (min-width: 960px) {
+  .contact-item i {
+    margin-right: 2px;
+  }
+}
+
 .contact-item .fa-phone-square {
   color: lightgreen;
 }
