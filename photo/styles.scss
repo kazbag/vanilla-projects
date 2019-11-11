@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+  font-family: "Nunito", sans-serif;
+}
+$primary: #d36158;
+$lighten: #e56960;
+$secondary: #28bfdb;
+$success: #a6db72;
+$info: #7c85c9;
+$text: #f0f0f0;
+$dark: #282828;
+
+.header {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./assets/img/header.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  .title {
+    box-shadow: 0px 25px 35px -40px rgba($secondary, 0.75);
+    margin: 0 auto;
+    color: $text;
+    border-radius: 12px;
+    padding: 5px;
+    background: rgba($dark, 0.8);
+    text-align: center;
+    background-color: rgba($lighten, 0.8);
+  }
+  .contact-container {
+    box-shadow: 0px 25px 35px -40px rgba($secondary, 0.75);
+    background-color: rgba($lighten, 0.8);
+    padding: 5px 15px;
+    border-radius: 12px;
+    .contact {
+      text-align: center;
+      .link {
+        color: $text;
+        text-decoration: none;
+        transition: color 0.3s;
+        &:hover {
+          color: $secondary;
+        }
+      }
+    }
+  }
+  .address {
+    color: $dark;
+  }
+  .display {
+    margin-bottom: 24px;
+  }
+}
+.products {
+  .pricelist {
+    border: 1px solid $dark;
+    width: 100%;
+    background-image: url("./assets/img/about.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    caption {
+      font-size: 24px;
+      background: $primary;
+    }
+    td {
+      padding: 25px;
+      color: $text;
+      background: rgba($dark, 0.8);
+    }
+    td,
+    th {
+      border: 1px solid $dark;
+      border-radius: 5px;
+    }
+    th {
+      background-color: $secondary;
+    }
+  }
+}

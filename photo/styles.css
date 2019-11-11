@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Nunito", sans-serif;
+}
+
+*::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.header {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("./assets/img/header.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+
+.header .title {
+  -webkit-box-shadow: 0px 25px 35px -40px rgba(40, 191, 219, 0.75);
+          box-shadow: 0px 25px 35px -40px rgba(40, 191, 219, 0.75);
+  margin: 0 auto;
+  color: #f0f0f0;
+  border-radius: 12px;
+  padding: 5px;
+  background: rgba(40, 40, 40, 0.8);
+  text-align: center;
+  background-color: rgba(229, 105, 96, 0.8);
+}
+
+.header .contact-container {
+  -webkit-box-shadow: 0px 25px 35px -40px rgba(40, 191, 219, 0.75);
+          box-shadow: 0px 25px 35px -40px rgba(40, 191, 219, 0.75);
+  background-color: rgba(229, 105, 96, 0.8);
+  padding: 5px 15px;
+  border-radius: 12px;
+}
+
+.header .contact-container .contact {
+  text-align: center;
+}
+
+.header .contact-container .contact .link {
+  color: #f0f0f0;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+
+.header .contact-container .contact .link:hover {
+  color: #28bfdb;
+}
+
+.header .address {
+  color: #282828;
+}
+
+.header .display {
+  margin-bottom: 24px;
+}
+
+.products .pricelist {
+  border: 1px solid #282828;
+  width: 100%;
+  background-image: url("./assets/img/about.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+
+.products .pricelist caption {
+  font-size: 24px;
+  background: #d36158;
+}
+
+.products .pricelist td {
+  padding: 25px;
+  color: #f0f0f0;
+  background: rgba(40, 40, 40, 0.8);
+}
+
+.products .pricelist td,
+.products .pricelist th {
+  border: 1px solid #282828;
+  border-radius: 5px;
+}
+
+.products .pricelist th {
+  background-color: #28bfdb;
+}
+/*# sourceMappingURL=styles.css.map */
