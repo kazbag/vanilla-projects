@@ -24,7 +24,7 @@
 
   </head>
   <body>
-    <header class="header">
+    <header class="header" id="header">
       <div id="particles-js">
       <nav class="navbar">
           <button class="hamburger">
@@ -34,16 +34,16 @@
           </button>
         <ul class="menu">
           <li class="menu-item">
-            <a href="#" class="menu-item-link">Start</a>
+            <a href="#header" class="menu-item-link">Start</a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-item-link">O mnie</a>
+            <a href="#about" class="menu-item-link">O mnie</a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-item-link">Projekty</a>
+            <a href="#projects" class="menu-item-link">Projekty</a>
           </li>
           <li class="menu-item">
-            <a href="#" class="menu-item-link">Kontakt</a>
+            <a href="#contact" class="menu-item-link">Kontakt</a>
           </li>
         </ul>
       </nav>
@@ -52,12 +52,12 @@
             Potrzebujesz strony dla firmy?
           </h1>
           <h2 class="subtitle" data-aos="fade-right">Chcesz pokazać się światu?</h2>
-          <a href="#" class="cta-button">Zobacz moją ofertę</a>
+          <a href="#about" class="cta-button">Zobacz więcej</a>
       </div>
     </header>
 </div>
 
-    <section class="section about">
+    <section class="section about" id="about">
       <h2 data-aos="fade-left" class="title">Co mogę dla Ciebie zrobić?</h2>
       <p data-aos="fade-right" class="about-me-description">
         Tworzę strony internetowe od zupełnych podstaw, jak i wprowadzam zmiany
@@ -80,13 +80,14 @@
         pozwalasz się zauważyć.
       </p>
     </section>
-    <section class="section projects">
+
+    <section class="section projects" id="projects">
       <h2 data-aos="fade-up" class="title">Zobacz moje realizacje</h2>
       <div  class="cards-container">
         <div data-aos="fade-up" class="card">
-          <h3 class="card-title">Projekt 1</h3>
-          <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem culpa provident laborum earum repellendus ullam!</p>
-          <a class="card-link" href="#">Przejdź do strony</a>
+          <h3 class="card-title">Portfolio</h3>
+          <p class="card-description">Moje portfolio. Użyta biblioteka animate on scroll oraz SCSS. Responsywna, lekka, przyjemna dla oka.</p>
+          <a class="card-link" target="_blank" rel="noreferrer noopener" href="https://kazbag.github.io/vanilla-projects/layout/">Przejdź do strony</a>
         </div>
         
         <div data-aos="fade-up" class="card">
@@ -105,12 +106,11 @@
           <h3 class="card-title">Projekt 4</h3>
           <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem culpa provident laborum earum repellendus ullam!</p>
           <a class="card-link" href="#">Przejdź do strony</a>
-        </div>
-        
-        
+        </div>       
       </div>
     </section>
-    <section class="section contact">
+
+    <section class="section contact" id="contact">
       <h2 data-aos="fade-left" class="title">Chcesz wiedzieć więcej?</h2>
       <h3 data-aos="fade-right" class="subtitle">Skontaktuj się ze mną.</h3>
       <ul data-aos="fade-up" class="contact-container">

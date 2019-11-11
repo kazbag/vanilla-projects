@@ -7,6 +7,7 @@ $large: 1300px;
   font-family: "Ubuntu", sans-serif;
   box-sizing: border-box;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 $dark: #2a2b2a;
 $light: #f8f4e3;
@@ -251,7 +252,9 @@ body {
         background-repeat: no-repeat;
         background-position: 50% 50%;
         transition: 0.3s;
-        background: url("https://images.pexels.com/photos/2808402/pexels-photo-2808402.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+      }
+      &:nth-of-type(1)::before {
+        background: url("./assets/img/portfolio.png");
       }
 
       &:hover::before,
