@@ -5,6 +5,7 @@ particlesJS.load("particles-js", "assets/particles.json", function() {
 
 const menu = document.querySelector(".menu");
 const hamburger = document.querySelector(".hamburger");
+
 const toggleNav = () => {
   menu.classList.toggle("visible");
 };
