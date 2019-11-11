@@ -294,10 +294,6 @@ body {
   background: #e5446d;
 }
 
-.section .cards-container .card-description {
-  text-indent: 12px;
-}
-
 .section .cards-container .card-link {
   border: 1px solid #e5446d;
   padding: 3px 9px;
@@ -331,6 +327,7 @@ body {
   background-position: 50% 50%;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  overflow: hidden;
 }
 
 .section .cards-container .card:nth-of-type(1)::before {
@@ -338,6 +335,7 @@ body {
 }
 
 .section .cards-container .card:hover::before, .section .cards-container .card:focus::before {
+  overflow: hidden;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
   -webkit-filter: blur(3px);
@@ -349,13 +347,13 @@ body {
 }
 
 .about-me-description {
-  text-indent: 12px;
+  -webkit-text-emphasis: wrap;
+          text-emphasis: wrap;
 }
 
 @media screen and (min-width: 960px) {
   .about-me-description {
     font-size: 20px;
-    text-indent: 0;
   }
 }
 
@@ -404,12 +402,12 @@ body {
   font-size: 2rem;
   background-color: #2a2b2a;
   border: 1px solid #2a2b2a;
-  margin-right: 24px;
+  margin: 0 24px;
 }
 
 @media screen and (min-width: 960px) {
   .contact-item i {
-    margin-right: 2px;
+    margin-right: 12px;
   }
 }
 

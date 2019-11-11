@@ -221,7 +221,6 @@ body {
         }
       }
       &-description {
-        text-indent: 12px;
       }
       &-link {
         border: 1px solid $primary;
@@ -252,6 +251,7 @@ body {
         background-repeat: no-repeat;
         background-position: 50% 50%;
         transition: 0.3s;
+        overflow: hidden;
       }
       &:nth-of-type(1)::before {
         background: url("./assets/img/portfolio.png");
@@ -259,6 +259,7 @@ body {
 
       &:hover::before,
       &:focus::before {
+        overflow: hidden;
         transform: scale(1.2);
         filter: blur(3px);
       }
@@ -268,11 +269,9 @@ body {
 .about {
   background: $dark;
   &-me-description {
-    text-indent: 12px;
-
+    text-emphasis: wrap;
     @media screen and(min-width:$medium) {
       font-size: 20px;
-      text-indent: 0;
     }
   }
 }
@@ -304,9 +303,9 @@ body {
       font-size: 2rem;
       background-color: $dark;
       border: 1px solid $dark;
-      margin-right: 24px;
+      margin: 0 24px;
       @media screen and(min-width: $medium) {
-        margin-right: 2px;
+        margin-right: 12px;
       }
     }
     .fa-phone-square {
