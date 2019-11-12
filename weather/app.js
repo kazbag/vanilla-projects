@@ -20,12 +20,10 @@ const getCard = response => {
   response.cod === 200
     ? (cardContainer.innerHTML = `
     <div class="card">
-
         <div class="city">
         <img class="city-image" src="http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png"/>
             <h3 class="city-name">${response.name}</h3>
         </div>
-
         <div class="city-info">
             <h6>${response.weather[0].description}</h6>
             <h6 class="city-temperature">
