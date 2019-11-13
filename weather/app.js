@@ -29,6 +29,9 @@ const getCard = response => {
             <h6 class="city-temperature">
                 ${response.main.temp}&deg;C
             </h6>
+            <h6 class="city-temperature">
+                Wilgotność: ${response.main.humidity}%
+            </h6>
         </div>
 
     </div>
