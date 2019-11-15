@@ -11,14 +11,48 @@
     <div class="container">
       <h1 class="title">Cucumberro, your partner.</h1>
       <form action="" class="form">
-        <input type="number" name="" id="work-minutes" />
-        <input type="number" name="" id="pause-minutes" />
-        <button id="go-button">Start!</button>
-        <button id="pause-button">Pause</button>
-        <button id="reset-button">Reset</button>
+        <div class="inputs">
+          <div class="input">
+            <label for="work-minutes">Work minutes</label>
+            <input
+              placeholder="interval minutes"
+              type="number"
+              name="work-minutes"
+              value="20"
+              id="work-minutes"
+            />
+          </div>
+          <div class="input">
+            <label for="interval-minutes">Interval minutes</label>
+            <input
+              placeholder="interval minutes"
+              type="number"
+              name=""
+              value="4"
+              id="intervals-amount"
+            />
+          </div>
+          <div class="input">
+            <label for="pause-minutes">Pause minutes</label>
+            <input
+              placeholder="pause length"
+              type="number"
+              name="pause-minutes"
+              value="10"
+              id="pause-minutes"
+            />
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="go-button">Start!</button>
+          <button id="pause-button">Pause</button>
+          <button id="reset-button">Reset</button>
+        </div>
       </form>
-      <img src="./assets/img/cucumber.png" alt="cucumber" />
-      <span class="time-left">20:00</span>
+      <div class="info">
+        <span class="intervals-left">Intervals left: 4</span>
+        <span class="time-left">20:00</span>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>

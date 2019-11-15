@@ -2,15 +2,89 @@
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
+$primary: #284400;
+$secondary: #c6d792;
+body {
+  height: 100vh;
+  background: url("./assets/img/cucumber.png");
+  background-size: cover;
+  background-position: center;
 }
 .container {
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
   display: flex;
   flex-direction: column;
+  .title {
+    color: white;
+  }
   .form {
+    margin: 24px 0;
     display: flex;
     flex-direction: column;
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      .input {
+        display: flex;
+        justify-content: space-between;
+        margin: 6px 0;
+        align-items: center;
+        input {
+          width: 20%;
+          padding: 5px 15px;
+          border: none;
+          border-bottom: 1px solid $secondary;
+          background: none;
+          color: white;
+          margin-right: 24px;
+        }
+        label {
+          padding: 5px;
+          border-radius: 12px;
+          text-align: center;
+          background: $secondary;
+          width: 60%;
+          color: black;
+        }
+      }
+    }
+    .buttons {
+      display: flex;
+      margin-top: 24px;
+      justify-content: space-around;
+      button {
+        display: inline-block;
+        width: 30%;
+        background: none;
+        border: 1px solid $secondary;
+        padding: 5px 15px;
+        border-radius: 12px;
+        background-color: white;
+      }
+    }
   }
   img {
     width: 25%;
+  }
+  .title {
+    font-size: 24px;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    line-height: 4;
+    font-size: 24px;
+    background: rgba(black, 0.5);
+    color: white;
   }
 }
