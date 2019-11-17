@@ -5,6 +5,7 @@ const goButton = document.querySelector("#go-button");
 const pauseButton = document.querySelector("#pause-button");
 const resetButton = document.querySelector("#reset-button");
 const form = document.querySelector("form");
+const timeLeftSpan = document.querySelector("#time-left");
 let workMinutes, intervalsAmount, pauseMinutes;
 let isStarted = false;
 
@@ -35,9 +36,25 @@ workMinutesInput.addEventListener("change", setWorkMinutes);
 intervalsAmountInput.addEventListener("change", setIntervalsAmount);
 pauseMinutesInput.addEventListener("change", setPauseMinutes);
 
+const updateTime = input => {
+  let time = input.value;
+  const updateTimeEachSecond = setInterval(() => {
+    goButton.disabled = true;
+    if (time <= 0) {
+      isStarted = !isStarted;
+      goButton.disabled = false;
+      clearInterval(updateTimeEachSecond);
+    }
+    timeLeftSpan.textContent = time--;
+  }, 1000);
+};
+
 const startApp = e => {
   e.preventDefault();
-  !isStarted ? (isStarted = !isStarted) : null;
+  if (!isStarted) {
+    updateTime(workMinutesInput);
+    isStarted = !isStarted;
+  }
 };
 
 const pauseApp = e => {
