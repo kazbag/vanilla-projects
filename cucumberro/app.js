@@ -37,7 +37,7 @@ intervalsAmountInput.addEventListener("change", setIntervalsAmount);
 pauseMinutesInput.addEventListener("change", setPauseMinutes);
 
 const updateTime = input => {
-  let time = input.value;
+  let time = input.value * 60;
   const updateTimeEachSecond = setInterval(() => {
     goButton.disabled = true;
     if (time <= 0) {
@@ -45,7 +45,12 @@ const updateTime = input => {
       goButton.disabled = false;
       clearInterval(updateTimeEachSecond);
     }
-    timeLeftSpan.textContent = time--;
+    let minutes = Math.floor(time / 60);
+    let seconds = time - minutes * 60;
+    time--;
+    timeLeftSpan.textContent = `${minutes >= 10 ? minutes : "0" + minutes}:${
+      seconds >= 10 ? seconds : "0" + seconds
+    }`;
   }, 1000);
 };
 
