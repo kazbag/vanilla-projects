@@ -10,7 +10,7 @@ let workMinutes = workMinutesInput.value;
 let intervalsAmount = intervalsAmountInput.value;
 let pauseMinutes = pauseMinutesInput.value;
 let isStarted = false;
-
+let isPaused = true;
 // refactor, I think it will be better to create one function which pass inputName as parameter
 const setWorkMinutes = e => {
   e.preventDefault();
@@ -47,6 +47,7 @@ const updateTime = input => {
   let time = input.value * 60;
   const updateTimeEachSecond = setInterval(() => {
     goButton.disabled = true;
+
     if (time <= 0) {
       intervalsAmount > 0
         ? intervalsAmount--
@@ -58,24 +59,34 @@ const updateTime = input => {
     let minutes = Math.floor(time / 60);
     let seconds = time - minutes * 60;
     time--;
-    console.log(intervalsAmount);
+    if (isPaused) {
+      clearInterval(updateTimeEachSecond);
+      goButton.disabled = false;
+    }
     timeLeftSpan.textContent = `${minutes >= 10 ? minutes : "0" + minutes}:${
       seconds >= 10 ? seconds : "0" + seconds
     }`;
-  }, 10);
+  }, 100);
 };
 
 const startApp = e => {
   e.preventDefault();
   if (!isStarted) {
-    updateTime(workMinutesInput);
+    isPaused = !isPaused;
     isStarted = !isStarted;
+    updateTime(workMinutesInput);
   }
 };
 
 const pauseApp = e => {
   e.preventDefault();
-  isStarted ? (isStarted = !isStarted) : null;
+  if (isStarted) {
+    let workMinutes = workMinutesInput.value;
+    let intervalsAmount = intervalsAmountInput.value;
+    let pauseMinutes = pauseMinutesInput.value;
+    let isStarted = false;
+    isPaused = true;
+  }
 };
 
 const resetApp = e => {
