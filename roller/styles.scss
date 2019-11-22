@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  &::after,
+  &::before {
+    box-sizing: border-box;
+  }
+}
+button {
+  padding: 5px 15px;
+  border-radius: 12px;
+  background: none;
+  border-width: 1px;
+  border-color: dodgerblue;
+  box-shadow: 5px 5px 5px -5px #000;
+  transition: 0.3s;
+  &:hover {
+    background: dodgerblue;
+    color: white;
+  }
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  .title {
+    margin: 24px 0;
+  }
+  #topic-form {
+    input {
+      display: block;
+      padding: 5px 0;
+      margin-bottom: 12px;
+      border: none;
+      border-bottom: 1px solid dodgerblue;
+    }
+  }
+  .list {
+    margin-top: 12px;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: none;
+    .item {
+      .vote {
+        margin-left: 12px;
+        padding: none;
+      }
+    }
+  }
+}

@@ -16,6 +16,8 @@ let hasAppBeenStarted = false;
 const audio = new Audio("./assets/sounds/ding.wav");
 // refactor, I think it will be better to create one function which pass inputName as parameter
 
+let timeVal = 1000;
+
 const setWorkMinutes = e => {
   e.preventDefault();
   if (!isStarted) {
@@ -71,7 +73,7 @@ const updateTime = input => {
     timeLeftSpan.textContent = `${minutes >= 10 ? minutes : "0" + minutes}:${
       seconds >= 10 ? seconds : "0" + seconds
     }`;
-  }, 10);
+  }, timeVal);
 };
 
 const startApp = e => {

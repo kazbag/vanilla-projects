@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+*::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+button {
+  padding: 5px 15px;
+  border-radius: 12px;
+  background: none;
+  border-width: 1px;
+  border-color: dodgerblue;
+  -webkit-box-shadow: 5px 5px 5px -5px #000;
+          box-shadow: 5px 5px 5px -5px #000;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: dodgerblue;
+  color: white;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.container .title {
+  margin: 24px 0;
+}
+
+.container #topic-form input {
+  display: block;
+  padding: 5px 0;
+  margin-bottom: 12px;
+  border: none;
+  border-bottom: 1px solid dodgerblue;
+}
+
+.container .list {
+  margin-top: 12px;
+  line-height: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  list-style-type: none;
+}
+
+.container .list .item .vote {
+  margin-left: 12px;
+  padding: none;
+}
+/*# sourceMappingURL=styles.css.map */

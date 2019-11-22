@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Głosowanie na tematy na kolejnym spotkaniu</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Coding Tree</h1>
+      <form id="topic-form" action="">
+        <input type="text" placeholder="dodaj swój temat" id="input-topic" />
+        <input type="text" placeholder="podaj swój nick" id="input-nick" />
+        <button id="button-topic">Dodaj temat</button>
+      </form>
+      <ul class="list">
+        <li class="item" id="1">
+          Jakiś temat (2)<button class="vote">Chcę to</button>
+        </li>
+        <li class="item" id="2">
+          Jakiś temat (0)<button class="vote">Chcę to</button>
+        </li>
+        <li class="item" id="3">
+          Jakiś temat (3)<button class="vote">Chcę to</button>
+        </li>
+        <li class="item" id="4">
+          Jakiś temat (1)<button class="vote">Chcę to</button>
+        </li>
+      </ul>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
