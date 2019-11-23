@@ -8,6 +8,7 @@
     box-sizing: border-box;
   }
 }
+$phone: 600px;
 button {
   padding: 5px 15px;
   border-radius: 12px;
@@ -24,6 +25,25 @@ button {
 .container {
   max-width: 960px;
   margin: 0 auto;
+  @media screen and(max-width: $phone) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .modal {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    display: block;
+    background: rgb(255, 153, 0);
+    border-radius: 12px;
+    padding: 5px;
+    max-width: 400px;
+    display: none;
+    &--visible {
+      display: inline-block;
+    }
+  }
   .title {
     margin: 24px 0;
   }
