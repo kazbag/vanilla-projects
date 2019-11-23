@@ -5,10 +5,12 @@ const buttonAdd = document.querySelector("#button-topic");
 const modal = document.querySelector(".modal");
 
 const showModal = () => {
-  modal.classList.add("modal--visible");
-  setTimeout(() => {
-    modal.classList.remove("modal--visible");
-  }, 3000);
+  if (!modal.classList.contains("modal--visible")) {
+    modal.classList.add("modal--visible");
+    setTimeout(() => {
+      modal.classList.remove("modal--visible");
+    }, 3000);
+  }
 };
 
 const addItem = e => {
