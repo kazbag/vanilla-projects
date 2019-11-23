@@ -3,6 +3,7 @@ const inputNick = document.querySelector("#input-nick");
 const list = document.querySelector(".list");
 const buttonAdd = document.querySelector("#button-topic");
 const modal = document.querySelector(".modal");
+
 const showModal = () => {
   modal.classList.add("modal--visible");
   setTimeout(() => {
