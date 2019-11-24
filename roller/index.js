@@ -1,7 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+
 app.use(bodyParser.json());
+
 const path = require("path");
 const db = require("./db");
 const collection = "topics";
@@ -22,6 +24,23 @@ app.get("/getTopics", (req, res) => {
         res.json(documents);
       }
     });
+});
+
+app.put("/:id", (req, res) => {
+  const topicID = req.params.id;
+  const userInput = req.body;
+
+  db.getDB()
+    .collection(collection)
+    .findOneAndUpdate(
+      { _id: db.getPrimaryKey(topicID) },
+      { $set: { topic: userInput.topic } },
+      { returnOriginal: false },
+      (err, result) => {
+        if (err) console.log(err);
+        else res.json(result);
+      }
+    );
 });
 
 db.connect(err => {
