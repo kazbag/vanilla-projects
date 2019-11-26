@@ -8,6 +8,18 @@ const path = require("path");
 const db = require("./db");
 const collection = "topics";
 
+
+
+db.connect(err => {
+  if (err) {
+    console.log("nie można połączyć z bazą");
+    process.exit(1);
+  } else {
+    app.listen(3000, () => {
+      console.log("połączono z bazą");
+    });
+  }
+});
 app.get("/", (req, res) => {
   res.sendfile(path.join(__dirname, "index.html"));
 });
@@ -37,8 +49,8 @@ app.put("/:id", (req, res) => {
       { $set: { topic: userInput.topic } },
       { returnOriginal: false },
       (err, result) => {
-        if (err) console.log(err);
-        else res.json(result);
+        if (err) console.log(err)
+        else res.json(result)
       }
     );
 });
@@ -46,21 +58,8 @@ app.put("/:id", (req, res) => {
 app.post('/', (req, res) => {
   const userInput = req.body;
   db.getDB().collection(collection).insertOne(userInput, (err, result) => {
-    if (err)
-      console.log(err);
-    else {
-      res.json({ result: result, document: result.ops[0] })
-    }
+    if (err) console.log(err)
+    else res.json({ result: result, document: result.ops[0] })
+
   })
 })
-
-db.connect(err => {
-  if (err) {
-    console.log("nie można połączyć z bazą");
-    process.exit(1);
-  } else {
-    app.listen(3000, () => {
-      console.log("połączono z bazą");
-    });
-  }
-});
