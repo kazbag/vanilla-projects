@@ -60,6 +60,13 @@ app.post('/', (req, res) => {
   db.getDB().collection(collection).insertOne(userInput, (err, result) => {
     if (err) console.log(err)
     else res.json({ result: result, document: result.ops[0] })
-
   })
 })
+app.delete('/:id', (req, res) => {
+  const topicID = req.params.id;
+
+  db.getDB().collection(collection).findOneAndDelete({ _id: db.getPrimaryKey(topicID) }, (err, result) => {
+    if (err) console.log(err);
+    else res.json(result)
+  })
+});
