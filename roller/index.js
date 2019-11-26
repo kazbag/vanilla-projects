@@ -21,8 +21,10 @@ db.connect(err => {
   }
 });
 app.get("/", (req, res) => {
-  res.sendfile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
+app.use(express.static(__dirname + '/public'));
+
 
 app.get("/getTopics", (req, res) => {
   db.getDB()
