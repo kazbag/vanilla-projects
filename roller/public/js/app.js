@@ -54,9 +54,11 @@ const buildIDs = topic => {
 
 const buildTemplate = (topic, ids) => {
   return `
-<li class="item" id=${ids.listItemID}>
-  ${topic.topic} (liczba głosów)<button class="vote" id="${ids.editID}">Chcę to</button><button class="vote edit" id="${ids.deleteID}">Usuń</button>
-</li>
+    <li class="item" id=${ids.listItemID}>
+      ${topic.topic} (liczba głosów)
+        <button class="vote" id="${ids.editID}">Chcę to</button>
+        <button class="vote edit" id="${ids.deleteID}">Usuń</button>
+    </li>
 `
 }
 
@@ -68,6 +70,7 @@ const displayTopics = data => {
     // deleteTopic(topic, ids.listItemID, ids.deleteID)
   })
 }
+
 form.addEventListener('submit', e => {
   e.preventDefault();
   fetch('/', {
@@ -81,7 +84,7 @@ form.addEventListener('submit', e => {
   }).then((data) => {
     if (data.result.ok == 1 && data.result.n == 1) {
       let ids = buildIDs(data.document)
-      displayTopics.innerHTML = (buildTemplate(data.document, ids))
+      list.innerHTML += (buildTemplate(data.document, ids))
       // editTopic(data.document, ids, topicID, ids.editID)
       // deleteTopic(data.document, ids.listItemID, ids.deleteID)
     }
