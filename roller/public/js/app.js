@@ -28,6 +28,17 @@ const list = document.querySelector('.list')
 const userInput = document.querySelector('#input-topic')
 const buttonAdd = document.querySelector('#button-topic')
 
+const getTopics = () => {
+  fetch('/getTopics', { method: "get" }).then((response) => {
+    return response.json()
+  }).then((data) => {
+    console.log(data);
+    displayTopics(data)
+  })
+}
+
+getTopics()
+
 const resetTopic = () => {
   userInput.value = ''
 }
@@ -43,17 +54,18 @@ const buildIDs = topic => {
 
 const buildTemplate = (topic, ids) => {
   return `
-  <li class="item" id=${ids.listItemID}>
-      ${topic.topic} (liczba głosów)<button class="vote" id="${id.editID}">Chcę to</button><button class="vote edit" id="${id.deleteID}">Usuń</button>
-  </li>
-  `
+<li class="item" id=${ids.listItemID}>
+  ${topic.topic} (liczba głosów)<button class="vote" id="${ids.editID}">Chcę to</button><button class="vote edit" id="${ids.deleteID}">Usuń</button>
+</li>
+`
 }
 
 const displayTopics = data => {
   data.forEach((topic) => {
     let ids = buildIDs(topic);
-    list.append(buildTemplate(topic, ids))
-    editTopic(topic, ids.topicID, ids.topicID)
-    deleteTopic(topic, ids.listItemID, ids.deleteID)
+    list.innerHTML = ''
+    list.innerHTML += (buildTemplate(topic, ids))
+    // editTopic(topic, ids.topicID, ids.topicID)
+    // deleteTopic(topic, ids.listItemID, ids.deleteID)
   })
 }
