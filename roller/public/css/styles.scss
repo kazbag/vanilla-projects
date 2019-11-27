@@ -17,10 +17,6 @@ button {
   border-color: dodgerblue;
   box-shadow: 5px 5px 5px -5px #000;
   transition: 0.3s;
-  &:hover {
-    background: dodgerblue;
-    color: white;
-  }
 }
 .container {
   max-width: 960px;
@@ -67,6 +63,18 @@ button {
       .vote {
         margin-left: 12px;
         padding: none;
+        &:hover {
+          background: dodgerblue;
+          color: white;
+        }
+      }
+      .edit {
+        background: #d44638;
+        color: white;
+        &:hover {
+          background: white;
+          color: #d44638;
+        }
       }
     }
   }

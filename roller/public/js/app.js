@@ -27,12 +27,12 @@
 const list = document.querySelector('.list')
 const userInput = document.querySelector('#input-topic')
 const buttonAdd = document.querySelector('#button-topic')
+const form = document.querySelector('#topic-form')
 
 const getTopics = () => {
   fetch('/getTopics', { method: "get" }).then((response) => {
     return response.json()
   }).then((data) => {
-    console.log(data);
     displayTopics(data)
   })
 }
@@ -63,9 +63,28 @@ const buildTemplate = (topic, ids) => {
 const displayTopics = data => {
   data.forEach((topic) => {
     let ids = buildIDs(topic);
-    list.innerHTML = ''
     list.innerHTML += (buildTemplate(topic, ids))
     // editTopic(topic, ids.topicID, ids.topicID)
     // deleteTopic(topic, ids.listItemID, ids.deleteID)
   })
 }
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  fetch('/', {
+    method: 'post',
+    body: JSON.stringify({ topic: userInput.value }),
+    headers: {
+      "Content-Type": "application/json; charset=utf-8"
+    }
+  }).then((response) => {
+    return response.json()
+  }).then((data) => {
+    if (data.result.ok == 1 && data.result.n == 1) {
+      let ids = buildIDs(data.document)
+      displayTopics.innerHTML = (buildTemplate(data.document, ids))
+      // editTopic(data.document, ids, topicID, ids.editID)
+      // deleteTopic(data.document, ids.listItemID, ids.deleteID)
+    }
+    resetTopic()
+  })
+})

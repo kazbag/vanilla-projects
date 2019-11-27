@@ -23,11 +23,6 @@ button {
   transition: 0.3s;
 }
 
-button:hover {
-  background: dodgerblue;
-  color: white;
-}
-
 .container {
   max-width: 960px;
   margin: 0 auto;
@@ -94,5 +89,20 @@ button:hover {
 .container .list .item .vote {
   margin-left: 12px;
   padding: none;
+}
+
+.container .list .item .vote:hover {
+  background: dodgerblue;
+  color: white;
+}
+
+.container .list .item .edit {
+  background: #d44638;
+  color: white;
+}
+
+.container .list .item .edit:hover {
+  background: white;
+  color: #d44638;
 }
 /*# sourceMappingURL=styles.css.map */
