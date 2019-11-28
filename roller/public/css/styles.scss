@@ -60,20 +60,25 @@ button {
     justify-content: space-around;
     list-style-type: none;
     .item {
-      .vote {
-        margin-left: 12px;
-        padding: none;
-        &:hover {
-          background: dodgerblue;
-          color: white;
+      display: flex;
+      width: 50%;
+      justify-content: space-between;
+      .buttons {
+        .vote {
+          margin-left: 12px;
+          padding: none;
+          &:hover {
+            background: dodgerblue;
+            color: white;
+          }
         }
-      }
-      .edit {
-        background: #d44638;
-        color: white;
-        &:hover {
-          background: white;
-          color: #d44638;
+        .delete {
+          background: #d44638;
+          color: white;
+          &:hover {
+            background: white;
+            color: #d44638;
+          }
         }
       }
     }

@@ -86,22 +86,32 @@ button {
   list-style-type: none;
 }
 
-.container .list .item .vote {
+.container .list .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container .list .item .buttons .vote {
   margin-left: 12px;
   padding: none;
 }
 
-.container .list .item .vote:hover {
+.container .list .item .buttons .vote:hover {
   background: dodgerblue;
   color: white;
 }
 
-.container .list .item .edit {
+.container .list .item .buttons .delete {
   background: #d44638;
   color: white;
 }
 
-.container .list .item .edit:hover {
+.container .list .item .buttons .delete:hover {
   background: white;
   color: #d44638;
 }
