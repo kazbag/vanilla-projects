@@ -10,6 +10,7 @@
   }
 }
 $primary: #1a936f;
+$active: #baf73c;
 $dark: #272727;
 $light: #f0f0f0;
 .container {
@@ -45,6 +46,9 @@ $light: #f0f0f0;
           text-decoration: none;
           color: $light;
           transition: 0.3s;
+          &--active {
+            color: $active;
+          }
           &:hover {
             color: $dark;
           }
@@ -101,15 +105,15 @@ $light: #f0f0f0;
       box-shadow: 0px 10px 25px -20px $light;
       margin-bottom: 24px;
       .table {
+        padding: 6px;
         color: $dark;
-        padding: 12px;
         td {
-          padding: 24px;
+          padding: 12px;
         }
       }
       .submit {
         background: none;
-        margin: 24px;
+        margin: 12px;
         display: block;
         min-width: 100px;
         border-radius: 24px;
@@ -119,6 +123,11 @@ $light: #f0f0f0;
         background: $primary;
         padding: 5px 15px;
         margin-left: auto;
+        transition: 0.3s;
+        &:hover {
+          background-color: $light;
+          color: $dark;
+        }
       }
     }
   }

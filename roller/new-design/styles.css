@@ -70,6 +70,10 @@
   transition: 0.3s;
 }
 
+.container .menu-aside .nav .item .link--active {
+  color: #baf73c;
+}
+
 .container .menu-aside .nav .item .link:hover {
   color: #272727;
 }
@@ -146,17 +150,17 @@
 }
 
 .container .content .card .table {
+  padding: 6px;
   color: #272727;
-  padding: 12px;
 }
 
 .container .content .card .table td {
-  padding: 24px;
+  padding: 12px;
 }
 
 .container .content .card .submit {
   background: none;
-  margin: 24px;
+  margin: 12px;
   display: block;
   min-width: 100px;
   border-radius: 24px;
@@ -167,5 +171,12 @@
   background: #1a936f;
   padding: 5px 15px;
   margin-left: auto;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container .content .card .submit:hover {
+  background-color: #f0f0f0;
+  color: #272727;
 }
 /*# sourceMappingURL=styles.css.map */
