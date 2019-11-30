@@ -41,6 +41,14 @@ $light: #f0f0f0;
         align-items: center;
         width: 75%;
         margin: 0 auto;
+        .link {
+          text-decoration: none;
+          color: $light;
+          transition: 0.3s;
+          &:hover {
+            color: $dark;
+          }
+        }
         .icon {
           margin-right: 24px;
           width: 25px;
@@ -60,6 +68,57 @@ $light: #f0f0f0;
         margin-top: auto;
         margin-bottom: 24px;
         line-height: 2;
+        .description {
+          font-size: 12px;
+        }
+        .link {
+          text-decoration: none;
+          color: $light;
+          transition: 0.3s;
+          &:hover {
+            color: $dark;
+          }
+        }
+      }
+    }
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    color: $light;
+    padding: 24px 0px 0px 24px;
+
+    .title {
+      font-size: 36px;
+      color: $primary;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background-color: $light;
+      border-radius: 24px;
+      border: 1px solid darken($light, 10%);
+      box-shadow: 0px 10px 25px -20px $light;
+      margin-bottom: 24px;
+      .table {
+        color: $dark;
+        padding: 12px;
+        td {
+          padding: 24px;
+        }
+      }
+      .submit {
+        background: none;
+        margin: 24px;
+        display: block;
+        min-width: 100px;
+        border-radius: 24px;
+        color: $light;
+        border: 1px solid $dark;
+        box-shadow: 0px 2px 15px -3px rgba(0, 0, 0, 0.75);
+        background: $primary;
+        padding: 5px 15px;
+        margin-left: auto;
       }
     }
   }
