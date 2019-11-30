@@ -11,6 +11,7 @@
 }
 $primary: #1a936f;
 $active: #baf73c;
+$warning: #600000;
 $dark: #272727;
 $light: #f0f0f0;
 .container {
@@ -99,6 +100,7 @@ $light: #f0f0f0;
     }
 
     .card {
+      position: relative;
       background-color: $light;
       border-radius: 24px;
       border: 1px solid darken($light, 10%);
@@ -127,6 +129,33 @@ $light: #f0f0f0;
         &:hover {
           background-color: $light;
           color: $dark;
+        }
+      }
+      .modal {
+        background: $light;
+        padding: 24px;
+        border-radius: 24px;
+        bottom: 0;
+        right: -300px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        .close {
+          position: absolute;
+          color: $dark;
+          top: 5px;
+          right: 5px;
+          font-size: 24px;
+          transition: 0.1s;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .input {
+          margin-bottom: 12px;
+          border: 1px solid $primary;
+          border-radius: 12px;
+          padding: 5px 15px;
         }
       }
     }
