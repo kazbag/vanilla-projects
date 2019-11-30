@@ -9,3 +9,58 @@
     box-sizing: border-box;
   }
 }
+$primary: #1a936f;
+$dark: #272727;
+$light: #f0f0f0;
+.container {
+  min-height: 100vh;
+  background: $dark;
+  display: flex;
+  .menu-aside {
+    display: flex;
+    flex-direction: column;
+    background: $primary;
+    min-width: 15%;
+    color: $light;
+    padding: 0px 12px;
+
+    .title {
+      margin: 24px 0;
+      font-size: 36px;
+    }
+
+    .nav {
+      min-height: 30%;
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      list-style: none;
+
+      .item {
+        display: flex;
+        align-items: center;
+        width: 75%;
+        margin: 0 auto;
+        .icon {
+          margin-right: 24px;
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+    .navigation-footer {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      height: auto;
+      .nav-footer {
+        list-style-type: none;
+        width: 75%;
+        margin: 0 auto;
+        margin-top: auto;
+        margin-bottom: 24px;
+        line-height: 2;
+      }
+    }
+  }
+}
