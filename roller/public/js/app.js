@@ -57,9 +57,11 @@ const buildIDs = topic => {
 const displayTopics = data => {
   data.forEach((topic) => {
     let ids = buildIDs(topic);
-    list.innerHTML += (buildTemplate(topic, ids))
-    // editTopic(topic, ids.topicID, ids.topicID)
+    const el = document.createElement('li')
+    el.innerHTML = buildTemplate(topic, ids)
+    list.appendChild(el)
     deleteTopic(topic, ids.listItemID, ids.deleteID)
+    // editTopic(topic, ids.topicID, ids.topicID)
   })
 }
 
@@ -76,7 +78,9 @@ form.addEventListener('submit', e => {
   }).then((data) => {
     if (data.result.ok == 1 && data.result.n == 1) {
       let ids = buildIDs(data.document)
-      list.innerHTML += (buildTemplate(data.document, ids))
+      const el = document.createElement('li')
+      el.innerHTML = buildTemplate(data.document, ids)
+      list.appendChild(el)
       // editTopic(data.document, ids, topicID, ids.editID)
       deleteTopic(data.document, ids.listItemID, ids.deleteID)
     }
