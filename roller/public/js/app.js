@@ -38,7 +38,7 @@ const deleteTopic = (topic, listItemID, deleteID) => {
       return response.json()
     }).then((data) => {
       if (data.ok == 1) {
-        list.removeChild(document.querySelector(`#${listItemID}`))
+        document.querySelector(`#${listItemID}`).parentNode.removeChild(document.querySelector(`#${listItemID}`))
       }
     })
   })
