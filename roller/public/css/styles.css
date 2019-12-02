@@ -96,12 +96,12 @@ button {
           justify-content: space-between;
 }
 
-.container .list .item .buttons .vote {
+.container .list .item .buttons .edit {
   margin-left: 12px;
   padding: none;
 }
 
-.container .list .item .buttons .vote:hover {
+.container .list .item .buttons .edit:hover {
   background: dodgerblue;
   color: white;
 }

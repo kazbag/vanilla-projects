@@ -6,9 +6,11 @@ const form = document.querySelector('#topic-form')
 const buildTemplate = (topic, ids) => {
   return `
       <li class="item" id=${ids.listItemID}>
-        ${topic.topic} (liczba głosów)
+        <span id="${ids.topicID}">
+          ${topic.topic} (liczba głosów)
+        </span>
         <div class="buttons">
-          <button class="vote" id="${ids.editID}">Chcę to</button>
+          <button class="edit" id="${ids.editID}">Edytuj</button>
           <button type="button" class="vote delete" id="${ids.deleteID}">Usuń</button>
         </div>
       </li>
@@ -29,6 +31,27 @@ const resetTopic = () => {
   userInput.value = ''
 }
 
+const editTopic = (topic, topicID, editID) => {
+  let editBtn = document.querySelector(`#${editID}`)
+  editBtn.addEventListener("click", () => {
+    fetch(`/${topic._id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({ topic: userInput.value })
+    }).then((response) => {
+      return response.json()
+    }).then((data) => {
+      if (data.ok == 1) {
+        let topicIndex = document.querySelector(`#${topicID}`)
+        topicIndex.textContent = `${data.value.topic} (liczba głosów)`
+        resetTopic()
+      }
+    })
+  })
+}
+
 const deleteTopic = (topic, listItemID, deleteID) => {
   let deleteBtn = document.querySelector(`#${deleteID}`)
   deleteBtn.addEventListener('click', () => {
@@ -46,7 +69,7 @@ const deleteTopic = (topic, listItemID, deleteID) => {
 
 const buildIDs = topic => {
   return {
-    editID: "_edit" + topic._id,
+    editID: "edit_" + topic._id,
     deleteID: "delete_" + topic._id,
     listItemID: "listItem_" + topic._id,
     topicID: "topic_" + topic._id
@@ -60,8 +83,8 @@ const displayTopics = data => {
     const el = document.createElement('li')
     el.innerHTML = buildTemplate(topic, ids)
     list.appendChild(el)
+    editTopic(topic, ids.topicID, ids.editID)
     deleteTopic(topic, ids.listItemID, ids.deleteID)
-    // editTopic(topic, ids.topicID, ids.topicID)
   })
 }
 
@@ -81,9 +104,10 @@ form.addEventListener('submit', e => {
       const el = document.createElement('li')
       el.innerHTML = buildTemplate(data.document, ids)
       list.appendChild(el)
-      // editTopic(data.document, ids, topicID, ids.editID)
+      editTopic(data.document, ids.topicID, ids.editID)
       deleteTopic(data.document, ids.listItemID, ids.deleteID)
     }
     resetTopic()
   })
 })
+
