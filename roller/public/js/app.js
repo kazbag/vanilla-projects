@@ -2,6 +2,17 @@ const list = document.querySelector('.list')
 const userInput = document.querySelector('#input-topic')
 const buttonAdd = document.querySelector('#button-topic')
 const form = document.querySelector('#topic-form')
+const modal = document.querySelector('#modal')
+
+const showModal = () => {
+  if (!modal.classList.contains('modal--visible')) {
+    modal.classList.add('modal--visible')
+    userInput.focus()
+    setTimeout(() => {
+      modal.classList.remove('modal--visible')
+    }, 4000);
+  }
+}
 
 const buildTemplate = (topic, ids) => {
   return `
@@ -10,8 +21,9 @@ const buildTemplate = (topic, ids) => {
           ${topic.topic} (liczba głosów)
         </span>
         <div class="buttons">
-          <button class="edit" id="${ids.editID}">Edytuj</button>
-          <button type="button" class="vote delete" id="${ids.deleteID}">Usuń</button>
+          <button type="button" class="edit" id="${ids.editID}">Edytuj</button>
+          <button type="button" class="delete" id="${ids.deleteID}">Usuń</button>
+          <button type="button" class="vote" id="${ids.voteID}">Głosuj</button>
         </div>
       </li>
   `
@@ -72,7 +84,8 @@ const buildIDs = topic => {
     editID: "edit_" + topic._id,
     deleteID: "delete_" + topic._id,
     listItemID: "listItem_" + topic._id,
-    topicID: "topic_" + topic._id
+    topicID: "topic_" + topic._id,
+    voteID: "vote_" + topic._id
   }
 }
 
@@ -90,30 +103,35 @@ const displayTopics = data => {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  fetch('/', {
-    method: 'post',
-    body: JSON.stringify({ topic: userInput.value }),
-    headers: {
-      "Content-Type": "application/json; charset=utf-8"
-    }
-  }).then((response) => {
-    return response.json()
-  }).then((data) => {
-    if (data.result.ok == 1 && data.result.n == 1) {
-      let ids = buildIDs(data.document)
-      const el = document.createElement('li')
-      el.innerHTML = buildTemplate(data.document, ids)
-      list.appendChild(el)
-      editTopic(data.document, ids.topicID, ids.editID)
-      deleteTopic(data.document, ids.listItemID, ids.deleteID)
-    }
-    resetTopic()
-  })
+  if (userInput.value.length > 5) {
+    fetch('/', {
+      method: 'post',
+      body: JSON.stringify({ topic: userInput.value }),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    }).then((response) => {
+      return response.json()
+    }).then((data) => {
+      if (data.result.ok == 1 && data.result.n == 1) {
+        let ids = buildIDs(data.document)
+        const el = document.createElement('li')
+        el.innerHTML = buildTemplate(data.document, ids)
+        list.appendChild(el)
+        editTopic(data.document, ids.topicID, ids.editID)
+        deleteTopic(data.document, ids.listItemID, ids.deleteID)
+      }
+      resetTopic()
+    })
+  } else {
+    showModal()
+  }
 })
 
 const setDateOfNextMeeting = () => {
   const today = new Date();
-  if (today.getDay > 1) {
+  // to fix
+  if (today.getDay > 1 && today.getDay < 5) {
     today.setDate(today.getDate() + (1 + 7 - today.getDay()) % 7);
   } else {
     today.setDate(today.getDate() + (4 + 7 - today.getDay()) % 7)
