@@ -152,21 +152,17 @@ form.addEventListener('submit', e => {
 })
 
 const setDateOfNextMeeting = () => {
-  const today = new Date();
-  // to fix
-  if (today.getDay > 1 && today.getDay < 5) {
-    today.setDate(today.getDate() + (1 + 7 - today.getDay()) % 7);
+  const today = new Date().getDay()
+  let nextMeeting
+  // set monday
+  if (today > 4) {
+    nextMeeting = "Poniedziałek"
+  } else if (today === 4 || today === 1) {
+    nextMeeting = "To już dziś!"
   } else {
-    today.setDate(today.getDate() + (4 + 7 - today.getDay()) % 7)
+    nextMeeting = "Czwartek"
   }
-  let month = String(today.getMonth() + 1);
-  let day = String(today.getDate());
-  let dayName = today.getDay > 1 ? "Poniedziałek" : "Czwartek";
-  const year = String(today.getFullYear());
-
-  if (month.length < 2) month = '0' + month;
-  if (day.length < 2) day = '0' + day;
-  document.querySelector('#next-meeting').textContent = `Następne spotkanie: ${dayName} ${day}/${month}/${year}`
+  document.querySelector('#next-meeting').textContent = `Następne spotkanie: ${nextMeeting}`
 }
 
 setDateOfNextMeeting()
