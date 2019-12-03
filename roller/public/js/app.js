@@ -111,3 +111,23 @@ form.addEventListener('submit', e => {
   })
 })
 
+const setDateOfNextMeeting = () => {
+  const today = new Date();
+  if (today.getDay > 1) {
+    today.setDate(today.getDate() + (1 + 7 - today.getDay()) % 7);
+  } else {
+    today.setDate(today.getDate() + (4 + 7 - today.getDay()) % 7)
+  }
+  let month = String(today.getMonth() + 1);
+  let day = String(today.getDate());
+  let dayName = today.getDay > 1 ? "Poniedziałek" : "Czwartek";
+  const year = String(today.getFullYear());
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+
+  document.querySelector('#next-meeting').textContent = `Następne spotkanie: ${dayName} ${day}/${month}/${year}`
+}
+
+setDateOfNextMeeting()
