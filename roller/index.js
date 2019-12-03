@@ -49,7 +49,7 @@ app.put("/:id", (req, res) => {
     .collection(collection)
     .findOneAndUpdate(
       { _id: db.getPrimaryKey(topicID) },
-      { $set: { topic: userInput.topic } },
+      { $set: { topic: userInput.topic }, $inc: { votes: 1 } },
       { returnOriginal: false },
       (err, result) => {
         if (err) console.log(err)

@@ -17,13 +17,13 @@ const showModal = () => {
 const buildTemplate = (topic, ids) => {
   return `
       <li class="item" id=${ids.listItemID}>
-        <span id="${ids.topicID}">
-          ${topic.topic} (liczba głosów)
+        <span>
+          ${topic.topic} <span id="${ids.topicID}">(${topic.votes})</span>
         </span>
         <div class="buttons">
+        <button type="button" class="vote" id="${ids.voteID}">Głosuj</button>
           <button type="button" class="edit" id="${ids.editID}">Edytuj</button>
           <button type="button" class="delete" id="${ids.deleteID}">Usuń</button>
-          <button type="button" class="vote" id="${ids.voteID}">Głosuj</button>
         </div>
       </li>
   `
@@ -43,6 +43,27 @@ const resetTopic = () => {
   userInput.value = ''
 }
 
+const voteForTopic = (topic, topicID, voteID) => {
+  let voteBtn = document.querySelector(`#${voteID}`)
+  voteBtn.addEventListener('click', () => {
+    fetch(`/${topic._id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+
+      body: JSON.stringify({ topic: topic.topic, votes: topic.votes })
+    }).then((response) => {
+      return response.json()
+    }).then((data) => {
+      if (data.ok == 1) {
+        let topicIndex = [...document.querySelector(`#${topicID}`).childNodes]
+        topicIndex[0].textContent = `(${data.value.votes})`
+      }
+    })
+  })
+}
+
 const editTopic = (topic, topicID, editID) => {
   let editBtn = document.querySelector(`#${editID}`)
   editBtn.addEventListener("click", () => {
@@ -57,7 +78,7 @@ const editTopic = (topic, topicID, editID) => {
     }).then((data) => {
       if (data.ok == 1) {
         let topicIndex = document.querySelector(`#${topicID}`)
-        topicIndex.textContent = `${data.value.topic} (liczba głosów)`
+        topicIndex.textContent = `${data.value.topic} (0)`
         resetTopic()
       }
     })
@@ -98,6 +119,7 @@ const displayTopics = data => {
     list.appendChild(el)
     editTopic(topic, ids.topicID, ids.editID)
     deleteTopic(topic, ids.listItemID, ids.deleteID)
+    voteForTopic(topic, ids.topicID, ids.voteID)
   })
 }
 
@@ -106,7 +128,7 @@ form.addEventListener('submit', e => {
   if (userInput.value.length > 5) {
     fetch('/', {
       method: 'post',
-      body: JSON.stringify({ topic: userInput.value }),
+      body: JSON.stringify({ topic: userInput.value, votes: 0 }),
       headers: {
         "Content-Type": "application/json; charset=utf-8"
       }
@@ -120,6 +142,7 @@ form.addEventListener('submit', e => {
         list.appendChild(el)
         editTopic(data.document, ids.topicID, ids.editID)
         deleteTopic(data.document, ids.listItemID, ids.deleteID)
+        voteForTopic(data.document, ids.topicID, ids.voteID)
       }
       resetTopic()
     })
@@ -143,8 +166,6 @@ const setDateOfNextMeeting = () => {
 
   if (month.length < 2) month = '0' + month;
   if (day.length < 2) day = '0' + day;
-
-
   document.querySelector('#next-meeting').textContent = `Następne spotkanie: ${dayName} ${day}/${month}/${year}`
 }
 
