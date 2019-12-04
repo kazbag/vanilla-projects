@@ -1,3 +1,4 @@
+AOS.init();
 let navbar = document.querySelector('.nav')
 let sticky = navbar.offsetTop
 window.onscroll = () => {

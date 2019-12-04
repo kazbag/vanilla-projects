@@ -11,10 +11,13 @@
 }
 
 $light: #f0f0f0;
+$lighten: #fef6f0;
 $dark: #272727;
 $primary: #f4a261;
+$secondary: #2a9d8f;
 body {
   background: $dark;
+  overflow-x: hidden;
 }
 .header {
   line-height: 3;
@@ -70,6 +73,29 @@ body {
     }
   }
 }
+.section {
+  margin: 0 auto;
+  margin-top: 24px;
+  width: 60%;
+  background: $lighten;
+  padding: 12px;
+  border-radius: 12px;
+  .title {
+    position: relative;
+    font-size: 24px;
+    margin-bottom: 24px;
+    &::after {
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      content: "";
+      background: $secondary;
+      width: 300px;
+      height: 2px;
+      z-index: 1000;
+    }
+  }
+}
 
 // helpers
 .sticky {
@@ -78,3 +104,5 @@ body {
   position: fixed;
   top: 0;
 }
+
+// https://coolors.co/264653-2a9d8f-e9c46a-f4a261-e76f51
