@@ -64,6 +64,8 @@ const voteForTopic = (topic, topicID, voteID) => {
   })
 }
 
+
+// to fix - when user edits, votes count resets
 const editTopic = (topic, topicID, editID) => {
   let editBtn = document.querySelector(`#${editID}`)
   editBtn.addEventListener("click", () => {
@@ -78,6 +80,7 @@ const editTopic = (topic, topicID, editID) => {
     }).then((data) => {
       if (data.ok == 1) {
         let topicIndex = document.querySelector(`#${topicID}`)
+        // probably here is mistake
         topicIndex.textContent = `${data.value.topic} (0)`
         resetTopic()
       }
@@ -109,7 +112,6 @@ const buildIDs = topic => {
     voteID: "vote_" + topic._id
   }
 }
-
 
 const displayTopics = data => {
   data.forEach((topic) => {
@@ -154,14 +156,9 @@ form.addEventListener('submit', e => {
 const setDateOfNextMeeting = () => {
   const today = new Date().getDay()
   let nextMeeting
-  // set monday
-  if (today > 4) {
-    nextMeeting = "Poniedziałek"
-  } else if (today === 4 || today === 1) {
-    nextMeeting = "To już dziś!"
-  } else {
-    nextMeeting = "Czwartek"
-  }
+  if (today > 4) nextMeeting = "Poniedziałek"
+  else if (today === 4 || today === 1) nextMeeting = "To już dziś!"
+  else nextMeeting = "Czwartek"
   document.querySelector('#next-meeting').textContent = `Następne spotkanie: ${nextMeeting}`
 }
 
