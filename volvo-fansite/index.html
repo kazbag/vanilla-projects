@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Wszystko o Volvo S60 pierwszej generacji</title>
+    <link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
+
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap&subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -14,7 +16,7 @@
 
 <body>
     <header class="header" id="start">
-        <div class="text" data-aos="fade-right" data-aos-duration="1000">
+        <div class="text" data-aos="fade-up" data-aos-duration="1000">
             <h1 class="title">Wszystko o Volvo S60</h1>
             <p class="subtitle">Jeżeli jesteś fanem szwedzkiej motoryzacji i uwielbiasz solidne wykonanie, mocne silniki
                 oraz komfort podróżowania, to jesteś w dobrym miejscu.</p>
@@ -42,13 +44,13 @@
             </li>
         </ul>
     </nav>
-    <section class="section about" id="about" data-aos="fade-left" data-aos-duration="1000">
+    <!-- <section class="section about" id="about" data-aos="flip-left" data-aos-duration="1000">
         <h3 class="title">O modelu</h3>
         <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quasi sapiente,
             deleniti quam ullam totam eveniet nisi laboriosam, ad nam inventore ut, cumque sit? Expedita id aut labore
             aliquam explicabo.</p>
     </section>
-    <section class="section history" id="history" data-aos="fade-right" data-aos-duration="1000">
+    <section class="section history" id="history" data-aos="flip-right" data-aos-duration="1000">
         <h3 class="title">Historia S60</h3>
         <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit quos distinctio veritatis
             temporibus voluptates dolorem deleniti mollitia recusandae quae, voluptatem nostrum provident. Iusto fugit
@@ -66,7 +68,7 @@
             placeat amet, dicta voluptatibus et consectetur asperiores modi velit autem ad, facilis corporis reiciendis
             corrupti eos. Adipisci, praesentium sequi!</p>
     </section>
-    <section class="section engines" id="engines" data-aos="fade-left" data-aos-duration="1000">
+    <section class="section engines" id="engines" data-aos="flip-down" data-aos-duration="1000">
         <h3 class="title">Silniki</h3>
         <table class="engines-table">
             <thead>
@@ -95,7 +97,7 @@
             </tbody>
         </table>
     </section>
-    <section class="section fails" id="fails" data-aos="fade-right" data-aos-duration="1000">
+    <section class="section fails" id="fails" data-aos="flip-up" data-aos-duration="1000">
         <h3 class="title">Co się psuje?</h3>
         <ul class="parts-menu">
             <li class="item">część</li>
@@ -112,6 +114,36 @@
     </section>
     <section class="section gallery" id="gallery" data-aos="fade-up" data-aos-duration="1000">
         <h3 class="title">Galeria</h3>
+        <div class="owl-carousel owl-theme">
+            <div class="carousel-item">
+                <h6 class="image-name">Lorem, ipsum dolor.</h6>
+                <img class="image" src="assets/img/header_image.jpg" alt="car">
+            </div>
+            <div class="carousel-item">
+                <h6 class="image-name">Lorem, ipsum dolor.</h6>
+                <img class="image" src="assets/img/header_image.jpg" alt="car">
+            </div>
+            <div class="carousel-item">
+                <h6 class="image-name">Lorem, ipsum dolor.</h6>
+                <img class="image" src="assets/img/header_image.jpg" alt="car">
+            </div>
+            <div class="carousel-item">
+                <h6 class="image-name">Lorem, ipsum dolor.</h6>
+                <img class="image" src="assets/img/header_image.jpg" alt="car">
+            </div>
+            <div class="carousel-item">
+                <h6 class="image-name">Lorem, ipsum dolor.</h6>
+                <img class="image" src="assets/img/header_image.jpg" alt="car">
+            </div>
+            <div class="carousel-item">
+                <h6 class="image-name">Lorem, ipsum dolor.</h6>
+                <img class="image" src="assets/img/header_image.jpg" alt="car">
+            </div>
+            <div class="carousel-item">
+                <h6 class="image-name">Lorem, ipsum dolor.</h6>
+                <img class="image" src="assets/img/header_image.jpg" alt="car">
+            </div>
+        </div>
     </section>
     <footer class="footer" id="footer">
         <ul class="footer-menu">
@@ -123,9 +155,11 @@
             <li class="item">aaa</li>
             <li class="item">aaa</li>
         </ul>
-    </footer>
+    </footer> -->
+    <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./app.js"></script>
+    <script src="node_modules/owl.carousel/dist/owl.carousel.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 
 </html>

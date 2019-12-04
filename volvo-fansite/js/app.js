@@ -1,4 +1,7 @@
 AOS.init();
+$(document).ready(function () {
+    $('.owl-carousel').owlCarousel();
+});
 let navbar = document.querySelector('.nav')
 let sticky = navbar.offsetTop
 window.onscroll = () => {
