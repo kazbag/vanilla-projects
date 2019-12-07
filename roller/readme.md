@@ -10,6 +10,11 @@ Aplikacja do wystartowania potrzebuje stworzonej lokalnie bazy w mongodb oraz wg
 npm install
 ```
 żeby pobrać wszystkie zależności. 
+
+```bash
+node index
+```
+żeby uruchomić serwer.
 ## Co działa, co nie działa, co będzie działać?
 
 Działa
