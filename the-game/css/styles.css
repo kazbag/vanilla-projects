@@ -38,10 +38,6 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   max-width: 760px;
@@ -75,6 +71,13 @@
   height: 100%;
   background: #c5c3c6;
   padding: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .main .player-info {
@@ -113,5 +116,38 @@
 .main .player-info .player-stats .points {
   margin-bottom: 6px;
   color: #c5c3c6;
+}
+
+.main .equipment {
+  margin-left: 24px;
+  background: #46494c;
+  border-radius: 12px;
+  padding: 12px;
+  width: 100%;
+}
+
+.main .equipment .player-equipment {
+  border: 1px solid #dcdcdd;
+  max-width: 300px;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.main .equipment .player-equipment .title {
+  color: #1985a1;
+}
+
+.main .equipment .player-equipment .menu {
+  list-style-type: none;
+  color: #c5c3c6;
+}
+
+.main .equipment .player-equipment .menu .item--dressed-stats {
+  list-style-type: none;
+  color: #1985a1;
+}
+
+.main .equipment .player-equipment .menu .item--dressed-stats:last-of-type {
+  margin-bottom: 12px;
 }
 /*# sourceMappingURL=styles.css.map */
