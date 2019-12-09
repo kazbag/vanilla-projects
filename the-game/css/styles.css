@@ -64,7 +64,7 @@
 }
 
 .navbar .menu .item .link:hover {
-  background-color: #1985a1;
+  background-color: #0f4e5f;
 }
 
 .main {
@@ -127,6 +127,10 @@
 }
 
 .main .equipment .player-equipment {
+  display: inline-block;
+  margin-right: 64px;
+  margin-bottom: auto;
+  width: 100%;
   border: 1px solid #dcdcdd;
   max-width: 300px;
   padding: 12px;
