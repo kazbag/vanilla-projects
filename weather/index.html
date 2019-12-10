@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Weather</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <form class="form" action="#">
-          <input placeholder="wpisz miasto" class="input input__search" type="text" id="searchbox" />
-        <button class="button button__search" id="search">Szukaj</button>
-      </form>
-      <div class="card-container">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Weather</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <form class="form" action="#">
+      <input placeholder="wpisz miasto" class="input input__search" type="text" id="searchbox" />
+      <label for="days-select" class="input input__label">Ilość dni</label>
+      <select name="days-select" id="days-select" class="input input__select">
+        <option value="1" class="option">1</option>
+        <option value="2" class="option">3</option>
+        <option value="3" class="option">7</option>
+      </select>
+      <button class="button button__search" id="search">Szukaj</button>
+    </form>
+    <div class="card-container">
     </div>
     <script src="app.js"></script>
-  </body>
+</body>
+
 </html>

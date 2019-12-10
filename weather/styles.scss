@@ -66,6 +66,16 @@ $dark: #313638;
       &:focus {
         border-color: rgb(255, 123, 0);
       }
+      &__label {
+        // background: $dark;
+        // color: $light;
+        font-size: 12px;
+        vertical-align: center;
+        display: flex;
+        align-items: center;
+        border-color: invert($color: dodgerblue);
+        margin-left: 12px;
+      }
     }
     .button {
       background: white;

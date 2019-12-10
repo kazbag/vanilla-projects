@@ -17,8 +17,8 @@ const getWeather = async e => {
 };
 
 const getCard = response => {
-  response.cod === 200
-    ? (cardContainer.innerHTML = `
+  if (response.cod === 200) {
+    cardContainer.innerHTML = `
     <div class="card">
         <div class="city">
         <img class="city-image" src="http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png"/>
@@ -35,8 +35,11 @@ const getCard = response => {
         </div>
 
     </div>
-    `)
-    : (cardContainer.innerHTML = "Podaj prawidłowe miasto");
+    `
+
+  } else {
+    cardContainer.innerHTML = "Podaj prawidłowe miasto"
+  }
 };
 
 searchbox.addEventListener("input", getCityValue);

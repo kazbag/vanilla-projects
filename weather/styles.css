@@ -93,6 +93,19 @@
   border-color: #ff7b00;
 }
 
+.wrapper .form .input__label {
+  font-size: 12px;
+  vertical-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-color: #e16f00;
+  margin-left: 12px;
+}
+
 .wrapper .form .button {
   background: white;
   border: 1px solid dodgerblue;
