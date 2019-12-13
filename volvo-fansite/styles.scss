@@ -57,16 +57,20 @@ body {
   min-height: 5vh;
   z-index: 10000;
   width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
   .hamburger {
     display: none;
   }
   @media screen and(max-width: $medium) {
     .hamburger {
       position: absolute;
+      min-height: 50px;
       right: 5px;
       top: 5px;
       display: block;
-      height: 25px;
+      // height: 25px;
       width: 25px;
       .line {
         display: block;
@@ -143,6 +147,7 @@ body {
 }
 // helpers
 .sticky {
+  min-height: 30px;
   box-shadow: 0px 5px 15px -15px $primary;
   background: rgba($dark, 0.85);
   border: none;
