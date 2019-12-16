@@ -16,21 +16,6 @@ class Player {
     }
 }
 
-const player = {
-    nick: 'Player 1',
-    password: 'veryhardpassword',
-    email: 'email@gmail.com',
-    id: 12,
-    level: 10,
-    gold: 1000,
-    defense: 260,
-    attack: 140,
-    minDamage: 10,
-    maxDamage: 14,
-    strength: 20,
-    dexterity: 15,
-    isPremium: false
-}
 
 class Monster {
     constructor(name, level, defense, attack, minDamage, maxDamage, strength, dexterity, drop) {
@@ -49,5 +34,16 @@ class Monster {
     }
 }
 
-const rat = new Monster("Rat", 1, 10, 10, 0, 4, 5, 5, ['cheese', 'gold coin']);
-rat.roar()
+const player_Rycerzinho = new Player('Rycerzinho', 'veryhardpassword', 'email@gmail.com', 12, 10, 1000, 260, 140, 10, 14, 20, 15, false)
+const monster_Rat = new Monster("Rat", 1, 10, 10, 0, 4, 5, 5, ['cheese', 'gold coin']);
+
+const fight = (player, monster) => {
+    let isFightDone = false
+    // fight algorithms
+    const playerHitChance = (player.dexterity / (player.dexterity + monster.dexterity) * 100)
+    const monsterHitChance = (monster.dexterity / (monster.dexterity + player.dexterity) * 100)
+    do {
+    } while (isFightDone)
+}
+
+fight(player_Rycerzinho, monster_Rat)
