@@ -123,3 +123,45 @@ $accent: #1985a1;
     }
   }
 }
+
+// expedition
+.expedition-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  .expedition-menu {
+    margin: 24px 0;
+    justify-content: space-between;
+    list-style-type: none;
+    display: flex;
+    .item {
+      margin-right: 24px;
+      &:hover {
+        color: $accent;
+        cursor: pointer;
+      }
+    }
+  }
+  .button {
+    display: block;
+    background: none;
+    color: $light;
+    border: 1px solid $secondary;
+    background: $accent;
+    padding: 5px 15px !important;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+}
+.fight-result {
+  width: 100%;
+  .results {
+    list-style-type: none;
+    .round-nr {
+      margin: 0 auto;
+      display: block;
+      text-align: center;
+    }
+  }
+}

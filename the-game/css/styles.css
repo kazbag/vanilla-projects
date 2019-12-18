@@ -154,4 +154,63 @@
 .main .equipment .player-equipment .menu .item--dressed-stats:last-of-type {
   margin-bottom: 12px;
 }
+
+.expedition-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.expedition-list .expedition-menu {
+  margin: 24px 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.expedition-list .expedition-menu .item {
+  margin-right: 24px;
+}
+
+.expedition-list .expedition-menu .item:hover {
+  color: #1985a1;
+  cursor: pointer;
+}
+
+.expedition-list .button {
+  display: block;
+  background: none;
+  color: #dcdcdd;
+  border: 1px solid #4c5c68;
+  background: #1985a1;
+  padding: 5px 15px !important;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.fight-result {
+  width: 100%;
+}
+
+.fight-result .results {
+  list-style-type: none;
+}
+
+.fight-result .results .round-nr {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
 /*# sourceMappingURL=styles.css.map */

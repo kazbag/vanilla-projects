@@ -1,6 +1,6 @@
 class Player {
-    constructor(nick, password, email, id, hitpoints, level, gold, defense, attack, minDamage, maxDamage, strength, dexterity, isPremium) {
-        this.nick = nick;
+    constructor(name, password, email, id, hitpoints, level, gold, defense, attack, minDamage, maxDamage, strength, dexterity, isPremium) {
+        this.name = name;
         this.password = password;
         this.email = email;
         this.id = id;
@@ -36,8 +36,8 @@ class Monster {
     }
 }
 
-const player_Rycerzinho = new Player('Rycerzinho', 'veryhardpassword', 'email@gmail.com', 12, 330, 10, 1000, 260, 140, 23, 25, 20, 15, false);
-const monster_Rat = new Monster("Rat", 1, 120, 10, 10, 0, 4, 5, 5, ['cheese', 'gold coin']);
+const player_Rycerzinho = new Player('Rycerzinho', 'veryhardpassword', 'email@gmail.com', 12, 330, 10, 1000, 260, 140, 13, 25, 20, 15, false);
+const monster_Rat = new Monster("Rat", 1, 120, 10, 10, 8, 12, 5, 5, ['cheese', 'gold coin']);
 
 const fight = (player, monster) => {
     // config
@@ -48,7 +48,9 @@ const fight = (player, monster) => {
 
     const playerHitChance = (player.dexterity / (player.dexterity + monster.dexterity) * 100);
     const monsterHitChance = (monster.dexterity / (monster.dexterity + player.dexterity) * 100);
-
+    const fightResultList = document.querySelector('.results')
+    fightResultList.innerHTML = ''
+    let round = 1
     while (roundsAmount > 0 && isFightFinished) {
         if (monster.hitpoints <= 0 || player.hitpoints <= 0) {
             isFightFinished = false
@@ -59,19 +61,28 @@ const fight = (player, monster) => {
 
         if (didPlayerHit) {
             monster.hitpoints -= player.minDamage
-            console.log("hp potwora " + monster.hitpoints);
-        } else {
-            console.log('gracz chybił');
         }
 
         if (didMonsterHit) {
             player.hitpoints -= monster.minDamage
-            console.log('hp gracza ' + player.hitpoints);
-        } else {
-            console.log('potwór chybił');
         }
-
+        fightResultList.innerHTML += `
+        <li class="item">
+            <span class="round-nr">Runda ${round}</span>
+            <p>hp przeciwnika ${monster.hitpoints}</p>
+            <p>hp gracza ${player.hitpoints}</p>
+        </li>
+        `
         roundsAmount--
+        round++
+    }
+    // to fix what if monster has less hp in basics but fight was 15 rounds
+    if (player.hitpoints > monster.hitpoints) {
+        fightResultList.innerHTML += `<h3 style="color:red;">${player.name} wygrywa</h3>`
+    } else if (player.hitpoints < monster.hitpoints) {
+        fightResultList.innerHTML += `<h3 style="color:red;">${monster.name} wygrywa</h3>`
+    } else {
+        fightResultList.innerHTML += `<h3 style="color:red;">Remis</h3>`
     }
 }
 

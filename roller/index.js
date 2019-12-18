@@ -8,8 +8,6 @@ const path = require("path");
 const db = require("./db");
 const collection = "topics";
 
-
-
 db.connect(err => {
   if (err) {
     console.log("nie można połączyć z bazą");
@@ -35,7 +33,6 @@ app.get("/getTopics", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(documents);
         res.json(documents);
       }
     });
@@ -44,7 +41,6 @@ app.get("/getTopics", (req, res) => {
 app.put("/:id", (req, res) => {
   const topicID = req.params.id;
   const userInput = req.body;
-
   db.getDB()
     .collection(collection)
     .findOneAndUpdate(
@@ -53,10 +49,13 @@ app.put("/:id", (req, res) => {
       { returnOriginal: false },
       (err, result) => {
         if (err) console.log(err)
-        else res.json(result)
+        else {
+          res.json(result)
+        }
       }
     );
 });
+
 
 app.post('/', (req, res) => {
   const userInput = req.body;
