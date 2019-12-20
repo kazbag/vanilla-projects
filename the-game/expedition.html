@@ -22,12 +22,17 @@
             <section class="expedition-list">
                 <h3 class="tip">Wybierz przeciwnika</h3>
                 <ul class="expedition-menu">
-                    <li class="item">Szczur</li>
-                    <li class="item">Dzik</li>
-                    <li class="item">Wilk</li>
-                    <li class="item">Niedźwiedź</li>
+                    <li class="item"><input class="monster-radio" type="radio" name="monster" id="monster-rat" value="0"
+                            checked>
+                        <label for="monster-rat">Szczur</label></li>
+                    <li class="item"><input class="monster-radio" type="radio" name="monster" id="monster-boar"
+                            value="1"> <label for="monster-boar">Dzik</label></li>
+                    <li class="item"><input class="monster-radio" type="radio" name="monster" id="monster-wolf"
+                            value="2"> <label for="monster-wolf">Wilk</label></li>
+                    <li class="item"><input class="monster-radio" type="radio" name="monster" id="monster-bear"
+                            value="3"> <label for="monster-bear">Niedźwiedź</label></li>
                 </ul>
-                <button type="button" class="button">Walcz</button>
+                <button type="button" class="button" id="button-fight">Walcz</button>
             </section>
             <section class="fight-result">
                 <ul class="results">

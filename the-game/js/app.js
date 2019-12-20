@@ -39,10 +39,25 @@ class Monster {
 }
 
 const player_Rycerzinho = new Player('Rycerzinho', 'veryhardpassword', 'email@gmail.com', 12, 330, 10, 1000, 260, 140, 13, 25, 20, 15, false);
+
 const monster_Rat = new Monster("Rat", 1, 120, 10, 10, 8, 12, 5, 5, ['ser', 'złoto']);
 const monster_Boar = new Monster("Boar", 3, 320, 13, 8, 18, 31, 15, 2, ['mięso', 'złoto']);
 const monster_Wolf = new Monster("Wolf", 8, 640, 23, 18, 38, 59, 15, 2, ['mięso', 'kość', 'złoto']);
+const monster_Bear = new Monster("Bear", 14, 770, 26, 14, 66, 97, 14, 2, ['mięso', 'futro', 'złoto']);
 
+const monsters = [monster_Rat, monster_Boar, monster_Wolf, monster_Bear]
+
+let selectedMonster = monsters[0]
+
+const selectEnemy = (e) => {
+    console.log(monsters[e.target.value]);
+    selectedMonster = monsters[e.target.value]
+}
+const selectsMonsters = [...document.querySelectorAll('.monster-radio')]
+
+selectsMonsters.forEach(monster => {
+    monster.addEventListener('click', selectEnemy)
+})
 const fight = (player, monster) => {
     // config
     let isFightFinished = true
@@ -106,4 +121,6 @@ const fight = (player, monster) => {
     fightResultList.innerHTML += `<h6>${monster.name} uderzył za ${monstersHitAmount}, natomiast ${player.name} uderzył za ${playersHitAmount}</h6>`
 }
 
-fight(player_Rycerzinho, monster_Wolf);
+
+const btnFight = document.querySelector('#button-fight')
+btnFight.addEventListener('click', () => fight(player_Rycerzinho, selectedMonster))
