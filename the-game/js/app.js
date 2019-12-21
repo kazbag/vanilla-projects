@@ -60,65 +60,73 @@ selectsMonsters.forEach(monster => {
 })
 const fight = (player, monster) => {
     // config
-    let isFightFinished = true
-    let roundsAmount = 15;
-    let playersHitAmount = 0
-    let monstersHitAmount = 0
+    if (player.hitpoints > 0 && monster.hitpoints > 0) {
 
-    // fight functions
+        let isFightFinished = false
+        let roundsAmount = 15;
+        let playersHitAmount = 0
+        let monstersHitAmount = 0
 
-    const calculateHit = (someone) => {
-        return Math.ceil((someone.maxDamage - someone.minDamage) * Math.random()) + someone.minDamage;
-    }
+        // fight functions
 
-    // fight algorithms
-
-    const playerHitChance = (player.dexterity / (player.dexterity + monster.dexterity) * 100);
-    const monsterHitChance = (monster.dexterity / (monster.dexterity + player.dexterity) * 100);
-    const fightResultList = document.querySelector('.results')
-
-    fightResultList.innerHTML = ''
-
-    let round = 1
-
-    while (roundsAmount > 0 && isFightFinished) {
-        if (monster.hitpoints <= 0 || player.hitpoints <= 0) {
-            isFightFinished = false
+        const calculateHit = (someone) => {
+            return Math.ceil((someone.maxDamage - someone.minDamage) * Math.random()) + someone.minDamage;
         }
-        const hitChance = Math.floor(Math.random() * 100) + 1;
-        const didPlayerHit = playerHitChance > hitChance;
-        const didMonsterHit = monsterHitChance > hitChance;
-
-        if (didPlayerHit) {
-            const hit = calculateHit(player)
-            playersHitAmount += hit
-            monster.hitpoints -= hit
+        const isDoubleHit = (someone) => {
+            return Math.ceil((someone.dexterity - someone.dexterity) * Math.random()) + someone.dexterity;
         }
 
-        if (didMonsterHit) {
-            const hit = calculateHit(monster)
-            monstersHitAmount += hit
-            player.hitpoints -= hit
-        }
-        fightResultList.innerHTML += `
+        // fight algorithms
+
+        const playerHitChance = (player.dexterity / (player.dexterity + monster.dexterity) * 100);
+        const monsterHitChance = (monster.dexterity / (monster.dexterity + player.dexterity) * 100);
+        const fightResultList = document.querySelector('.results')
+
+        fightResultList.innerHTML = ''
+
+        let round = 1
+
+        while (roundsAmount > 0 && !isFightFinished) {
+            if (monster.hitpoints <= 0 || player.hitpoints <= 0) {
+                isFightFinished = true
+            }
+
+            const hitChance = Math.floor(Math.random() * 100) + 1;
+            const didPlayerHit = playerHitChance >= hitChance;
+            const didMonsterHit = monsterHitChance >= hitChance;
+
+            if (didPlayerHit) {
+                const hit = calculateHit(player)
+                playersHitAmount += hit
+                monster.hitpoints -= hit
+            }
+
+            if (didMonsterHit) {
+                const hit = calculateHit(monster)
+                monstersHitAmount += hit
+                player.hitpoints -= hit
+            }
+
+            fightResultList.innerHTML += `
         <li class="item">
             <span class="round-nr">Runda ${round}</span>
             <p>hp przeciwnika ${monster.hitpoints}</p>
             <p>hp gracza ${player.hitpoints}</p>
         </li>
         `
-        roundsAmount--
-        round++
+            roundsAmount--
+            round++
+        }
+        // to fix what if monster has less hp in basics but fight was 15 rounds
+        fightResultList.innerHTML += `<h6>${monster.name} uderzył za ${monstersHitAmount}, natomiast ${player.name} uderzył za ${playersHitAmount}</h6>`
+        if ((player.hitpoints > monster.hitpoints || playersHitAmount > monstersHitAmount) && player.hitpoints > 0) {
+            fightResultList.innerHTML += `<h3 style="color:red;">${player.name} wygrywa</h3>`
+        } else if ((player.hitpoints < monster.hitpoints || monstersHitAmount > playersHitAmount) && monster.hitpoints > 0) {
+            fightResultList.innerHTML += `<h3 style="color:red;">${monster.name} wygrywa</h3>`
+        } else {
+            fightResultList.innerHTML += `<h3 style="color:red;">Remis</h3>`
+        }
     }
-    // to fix what if monster has less hp in basics but fight was 15 rounds
-    if ((player.hitpoints > monster.hitpoints || playersHitAmount > monstersHitAmount) && player.hitpoints > 0) {
-        fightResultList.innerHTML += `<h3 style="color:red;">${player.name} wygrywa</h3>`
-    } else if ((player.hitpoints < monster.hitpoints || monstersHitAmount > playersHitAmount) && monster.hitpoints > 0) {
-        fightResultList.innerHTML += `<h3 style="color:red;">${monster.name} wygrywa</h3>`
-    } else {
-        fightResultList.innerHTML += `<h3 style="color:red;">Remis</h3>`
-    }
-    fightResultList.innerHTML += `<h6>${monster.name} uderzył za ${monstersHitAmount}, natomiast ${player.name} uderzył za ${playersHitAmount}</h6>`
 }
 
 
