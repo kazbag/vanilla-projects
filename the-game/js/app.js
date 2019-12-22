@@ -73,7 +73,7 @@ const fight = (player, monster) => {
             return Math.ceil((someone.maxDamage - someone.minDamage) * Math.random()) + someone.minDamage;
         }
         const isDoubleHit = (someone) => {
-            return Math.ceil((someone.dexterity - someone.dexterity) * Math.random()) + someone.dexterity;
+            return Math.ceil((someone.dexterity - someone.dexterity) * Math.random()) + someone.dexterity >= Math.ceil(Math.random() * 100);
         }
 
         // fight algorithms
@@ -99,12 +99,20 @@ const fight = (player, monster) => {
                 const hit = calculateHit(player)
                 playersHitAmount += hit
                 monster.hitpoints -= hit
+                if (isDoubleHit(player)) {
+                    monster.hitpoints -= hit
+                    playersHitAmount += hit
+                }
             }
 
             if (didMonsterHit) {
                 const hit = calculateHit(monster)
                 monstersHitAmount += hit
                 player.hitpoints -= hit
+                if (isDoubleHit(monster)) {
+                    player.hitpoints -= hit
+                    monstersHitAmount += hit
+                }
             }
 
             fightResultList.innerHTML += `
