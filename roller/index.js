@@ -1,8 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser')
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 const path = require("path");
 const db = require("./db");
@@ -58,19 +60,23 @@ app.put("/:id", (req, res) => {
 
 app.put("/vote/:id", (req, res) => {
   const topicID = req.params.id;
-  db.getDB()
-    .collection(collection)
-    .findOneAndUpdate(
-      { _id: db.getPrimaryKey(topicID) },
-      { $inc: { votes: 1 } },
-      { returnOriginal: false },
-      (err, result) => {
-        if (err) console.log(err)
-        else {
-          res.json(result)
+  const isVoted = Object.values(req.cookies).indexOf(topicID.toString()) > -1
+  if (!isVoted) {
+    db.getDB()
+      .collection(collection)
+      .findOneAndUpdate(
+        { _id: db.getPrimaryKey(topicID) },
+        { $inc: { votes: 1 } },
+        { returnOriginal: false },
+        (err, result) => {
+          if (err) console.log(err)
+          else {
+            res.cookie(topicID, topicID, { maxAge: 24 * 60 * 60 * 1000 })
+            res.json(result)
+          }
         }
-      }
-    );
+      );
+  }
 });
 
 
