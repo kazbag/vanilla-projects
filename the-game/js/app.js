@@ -1,3 +1,18 @@
+let isModalVisible = false
+const showModal = () => {
+    const modal = document.querySelector('.modal')
+    if (!isModalVisible) {
+        isModalVisible = true
+        modal.classList.add('modal--visible')
+        setTimeout(() => {
+            isModalVisible = false
+            modal.classList.remove('modal--visible')
+        }, 3500);
+    }
+}
+
+// 
+
 class Player {
     constructor(name, password, email, id, hitpoints, level, gold, defense, attack, minDamage, maxDamage, strength, dexterity, isPremium) {
         this.name = name;
@@ -134,6 +149,8 @@ const fight = (player, monster) => {
         } else {
             fightResultList.innerHTML += `<h3 style="color:red;">Remis</h3>`
         }
+    } else {
+        showModal()
     }
 }
 
