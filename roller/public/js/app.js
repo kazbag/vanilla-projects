@@ -14,6 +14,14 @@ const showModal = () => {
   }
 }
 
+const setDates = () => {
+  [...document.querySelectorAll('.date-option')].forEach(item => {
+    item.textContent = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
+  })
+}
+
+setDates()
+
 const buildTemplate = (topic, ids) => {
   return `
       <li class="item" id=${ids.listItemID}>

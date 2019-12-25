@@ -109,6 +109,10 @@ button {
   outline-color: dodgerblue;
 }
 
+.container .form .select {
+  display: block;
+}
+
 .container .form .submit {
   background-color: dodgerblue;
   color: white;
