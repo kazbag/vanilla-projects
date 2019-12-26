@@ -36,10 +36,11 @@ class Player {
 
 
 class Monster {
-    constructor(name, level, hitpoints, defense, attack, minDamage, maxDamage, strength, dexterity, drop) {
+    constructor(name, level, hitpoints, maxHitpoints, defense, attack, minDamage, maxDamage, strength, dexterity, drop) {
         this.name = name;
         this.level = level;
         this.hitpoints = hitpoints;
+        this.maxHitpoints = maxHitpoints;
         this.defense = defense;
         this.attack = attack;
         this.minDamage = minDamage;
@@ -48,17 +49,22 @@ class Monster {
         this.dexterity = dexterity;
         this.drop = drop;
     }
+
     roar() {
         console.log(`${this.name} says Ssshhh...`);
+    }
+
+    heal() {
+        this.hitpoints = this.maxHitpoints;
     }
 }
 
 const player_Rycerzinho = new Player('Rycerzinho', 'veryhardpassword', 'email@gmail.com', 12, 330, 10, 1000, 260, 140, 13, 25, 20, 15, false);
 
-const monster_Rat = new Monster("Rat", 1, 120, 10, 10, 8, 12, 5, 5, ['ser', 'złoto']);
-const monster_Boar = new Monster("Boar", 3, 320, 13, 8, 18, 31, 15, 2, ['mięso', 'złoto']);
-const monster_Wolf = new Monster("Wolf", 8, 640, 23, 18, 38, 59, 15, 2, ['mięso', 'kość', 'złoto']);
-const monster_Bear = new Monster("Bear", 14, 770, 26, 14, 66, 97, 14, 2, ['mięso', 'futro', 'złoto']);
+const monster_Rat = new Monster("Rat", 1, 120, 120, 10, 10, 8, 12, 5, 5, ['ser', 'złoto']);
+const monster_Boar = new Monster("Boar", 3, 320, 320, 13, 8, 18, 31, 15, 2, ['mięso', 'złoto']);
+const monster_Wolf = new Monster("Wolf", 8, 640, 640, 23, 18, 38, 59, 15, 2, ['mięso', 'kość', 'złoto']);
+const monster_Bear = new Monster("Bear", 14, 770, 770, 26, 14, 66, 97, 14, 2, ['mięso', 'futro', 'złoto']);
 
 const monsters = [monster_Rat, monster_Boar, monster_Wolf, monster_Bear]
 
@@ -143,10 +149,13 @@ const fight = (player, monster) => {
         // to fix what if monster has less hp in basics but fight was 15 rounds
         fightResultList.innerHTML += `<h6>${monster.name} uderzył za ${monstersHitAmount}, natomiast ${player.name} uderzył za ${playersHitAmount}</h6>`
         if ((player.hitpoints > monster.hitpoints || playersHitAmount > monstersHitAmount) && player.hitpoints > 0) {
+            monster.heal()
             fightResultList.innerHTML += `<h3 style="color:red;">${player.name} wygrywa</h3>`
         } else if ((player.hitpoints < monster.hitpoints || monstersHitAmount > playersHitAmount) && monster.hitpoints > 0) {
+            monster.heal()
             fightResultList.innerHTML += `<h3 style="color:red;">${monster.name} wygrywa</h3>`
         } else {
+            monster.heal()
             fightResultList.innerHTML += `<h3 style="color:red;">Remis</h3>`
         }
     } else {
