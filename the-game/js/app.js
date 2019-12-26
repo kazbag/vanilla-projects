@@ -14,12 +14,13 @@ const showModal = () => {
 // 
 
 class Player {
-    constructor(name, password, email, id, hitpoints, level, gold, defense, attack, minDamage, maxDamage, strength, dexterity, isPremium) {
+    constructor(name, password, email, id, hitpoints, maxHitpoints, level, gold, defense, attack, minDamage, maxDamage, strength, dexterity, isPremium) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.id = id;
         this.hitpoints = hitpoints;
+        this.maxHitpoints = maxHitpoints;
         this.level = level;
         this.gold = gold;
         this.defense = defense;
@@ -59,7 +60,7 @@ class Monster {
     }
 }
 
-const player_Rycerzinho = new Player('Rycerzinho', 'veryhardpassword', 'email@gmail.com', 12, 330, 10, 1000, 260, 140, 13, 25, 20, 15, false);
+const player_Rycerzinho = new Player('Rycerzinho', 'veryhardpassword', 'email@gmail.com', 12, 330, 330, 10, 1000, 260, 140, 13, 25, 20, 15, false);
 
 const monster_Rat = new Monster("Rat", 1, 120, 120, 10, 10, 8, 12, 5, 5, ['ser', 'złoto']);
 const monster_Boar = new Monster("Boar", 3, 320, 320, 13, 8, 18, 31, 15, 2, ['mięso', 'złoto']);
@@ -149,15 +150,13 @@ const fight = (player, monster) => {
         // to fix what if monster has less hp in basics but fight was 15 rounds
         fightResultList.innerHTML += `<h6>${monster.name} uderzył za ${monstersHitAmount}, natomiast ${player.name} uderzył za ${playersHitAmount}</h6>`
         if ((player.hitpoints > monster.hitpoints || playersHitAmount > monstersHitAmount) && player.hitpoints > 0) {
-            monster.heal()
             fightResultList.innerHTML += `<h3 style="color:red;">${player.name} wygrywa</h3>`
         } else if ((player.hitpoints < monster.hitpoints || monstersHitAmount > playersHitAmount) && monster.hitpoints > 0) {
-            monster.heal()
             fightResultList.innerHTML += `<h3 style="color:red;">${monster.name} wygrywa</h3>`
         } else {
-            monster.heal()
             fightResultList.innerHTML += `<h3 style="color:red;">Remis</h3>`
         }
+        monster.heal()
     } else {
         showModal()
     }
@@ -165,4 +164,20 @@ const fight = (player, monster) => {
 
 
 const btnFight = document.querySelector('#button-fight')
-btnFight.addEventListener('click', () => fight(player_Rycerzinho, selectedMonster))
+if (btnFight != null) {
+    btnFight.addEventListener('click', () => fight(player_Rycerzinho, selectedMonster))
+}
+
+const renderPlayerStats = (player) => {
+    const stats = [...document.querySelectorAll('.points')]
+    stats[0].textContent = player.gold
+    stats[1].textContent = `${player.hitpoints}/${player.maxHitpoints}`
+    stats[2].textContent = player.defense
+    stats[3].textContent = player.attack
+    stats[4].textContent = `${player.minDamage}-${player.maxDamage}`
+    stats[5].textContent = player.strength
+    stats[6].textContent = player.dexterity
+    console.log(stats);
+}
+
+renderPlayerStats(player_Rycerzinho)
