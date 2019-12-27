@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 });
 app.use(express.static(__dirname + '/public'));
 
-app.get("/getTopics", (req, res) => {
+app.get("/meetings", (req, res) => {
   db.getDB()
     .collection(collection)
     .find({})
@@ -38,6 +38,21 @@ app.get("/getTopics", (req, res) => {
       }
     });
 });
+
+app.get("/meetings/incoming", (req, res) => {
+  db.getDB()
+    .collection(collection)
+    .find()
+    .sort({ date: 1 })
+    .limit(1)
+    .toArray((err, documents) => {
+      if (err)
+        console.log(err);
+      else
+        res.json(documents)
+    })
+});
+
 
 app.put("/:id", (req, res) => {
   const topicID = req.params.id;
