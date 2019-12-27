@@ -14,14 +14,6 @@ const showModal = () => {
   }
 }
 
-const setDates = () => {
-  [...document.querySelectorAll('.date-option')].forEach(item => {
-    item.textContent = new Date().toJSON().slice(0, 10).replace(/-/g, '/')
-  })
-}
-
-setDates()
-
 const buildTemplate = (topic, ids) => {
   return `
       <li class="item" id=${ids.listItemID}>
@@ -138,7 +130,7 @@ form.addEventListener('submit', e => {
   if (userInput.value.length > 5) {
     fetch('/', {
       method: 'post',
-      body: JSON.stringify({ topic: userInput.value, votes: 0 }),
+      body: JSON.stringify({ topic: userInput.value, votes: 0, added: new Date().toISOString() }),
       headers: {
         "Content-Type": "application/json; charset=utf-8"
       }

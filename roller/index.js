@@ -26,7 +26,6 @@ app.get("/", (req, res) => {
 });
 app.use(express.static(__dirname + '/public'));
 
-
 app.get("/getTopics", (req, res) => {
   db.getDB()
     .collection(collection)
