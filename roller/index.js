@@ -22,7 +22,7 @@ db.connect(err => {
 });
 
 app.get("/", (req, res) => {
-  res.sendz('<h1>Ni ma frontendu, zabrali złe człowieki</h1>')
+  res.send('<h1>Ni ma frontendu, zabrali złe człowieki</h1>')
 });
 
 app.get("/meetings", (req, res) => {
