@@ -22,9 +22,8 @@ db.connect(err => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendz('<h1>Ni ma frontendu, zabrali złe człowieki</h1>')
 });
-app.use(express.static(__dirname + '/public'));
 
 app.get("/meetings", (req, res) => {
   db.getDB()
@@ -42,9 +41,21 @@ app.get("/meetings", (req, res) => {
 app.get("/meetings/incoming", (req, res) => {
   db.getDB()
     .collection(collection)
-    .find()
+    .find({ date: { $gte: new Date().getTime() } })
     .sort({ date: 1 })
     .limit(1)
+    .toArray((err, documents) => {
+      if (err)
+        console.log(err);
+      else
+        res.json(documents)
+    })
+});
+
+app.get("/meetings/archive", (req, res) => {
+  db.getDB()
+    .collection(collection)
+    .find({ date: { $lte: new Date().getTime() } })
     .toArray((err, documents) => {
       if (err)
         console.log(err);

@@ -15,30 +15,40 @@ npm install
 node index
 ```
 żeby uruchomić serwer.
+
 ## Co działa, co nie działa, co będzie działać?
 
 Działa
 
 * Manipulacja tematem (dodanie, edycja, usunięcie)
-* Głosowanie (na razie bez walidacji, można głosować tak długo, dopóki starczy Ci sił w myszce)
-* Prosty layout (docelowo zaimplementowany będzie ten stworzony prze Kubę)
+* Głosowanie (zrobiona prosta walidacja poprzez cookies)
 
 Czego brakuje
-* Walidacji głosowania
 * Rejestracji/logowania
 * Ról użytkowników (np. tylko administrator, lub osoba dodająca może usunąć temat)
 * Logiki (temat z najwyższą liczbą głosów zostaje przeniesiony do archiwum, a reszta głosów zostaje wyzerowana)
 * Wszystkiego innego
 
 Co będzie działać
-* Muszę puścić serwer wraz z bazą w świat, gdyż tworzenie przez każdego lokalnej bazy mija się z celem
 * Wszystko :) Bądźmy dobrej myśli!
 
 
 ## Technologie
 
-Jako backend proponuję użyć ekosystemu JavaScriptowego, czyli NodeJS (a dokładniej jego framework - express). Frontend - ReactJS.
+ExpressJS + MongoDB (docelowo Mongoose)
 
+## Założenia
+
+- Jednostka czasu - timestamp (new Date().getTime())
+
+## Endpointy dla harmonogramu
+
+- /meetings - lista wszystkich spotkań
+- /meetings/incoming - najbliższe spotkanie
+- /meetings/archive - archiwum spotkań, które się odbyły
+
+## Endpointy dla innych zakładek
+// todo
 
 ## Licencja
 [MIT](https://choosealicense.com/licenses/mit/)
