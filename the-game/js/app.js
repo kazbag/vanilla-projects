@@ -31,8 +31,9 @@ class Player {
         this.dexterity = dexterity;
         this.isPremium = isPremium;
     }
-
-
+    heal() {
+        this.hitpoints = this.maxHitpoints
+    }
 }
 
 
@@ -177,7 +178,6 @@ const renderPlayerStats = (player) => {
     stats[4].textContent = `${player.minDamage}-${player.maxDamage}`
     stats[5].textContent = player.strength
     stats[6].textContent = player.dexterity
-    console.log(stats);
 }
 
 renderPlayerStats(player_Rycerzinho)
