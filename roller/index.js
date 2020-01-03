@@ -15,20 +15,30 @@ db.connect(err => {
     console.log("nie można połączyć z bazą");
     process.exit(1);
   } else {
-    app.listen(3000, () => {
+    app.listen(3001, () => {
       console.log("połączono z bazą");
     });
   }
-});
-
-app.get("/", (req, res) => {
-  res.send('<h1>Ni ma frontendu, zabrali złe człowieki</h1>')
 });
 
 app.get("/meetings", (req, res) => {
   db.getDB()
     .collection(collection)
     .find({})
+    .toArray((err, documents) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(documents);
+      }
+    });
+});
+
+app.get("/meetings/sorted", (req, res) => {
+  db.getDB()
+    .collection(collection)
+    .find({})
+    .sort({ date: 1 })
     .toArray((err, documents) => {
       if (err) {
         console.log(err);
@@ -52,6 +62,20 @@ app.get("/meetings/incoming", (req, res) => {
     })
 });
 
+app.get("/meetings/lastone", (req, res) => {
+  db.getDB()
+    .collection(collection)
+    .find({ date: { $lte: new Date().getTime() } })
+    .sort({ date: -1 })
+    .limit(1)
+    .toArray((err, documents) => {
+      if (err)
+        console.log(err);
+      else
+        res.json(documents)
+    })
+});
+
 app.get("/meetings/archive", (req, res) => {
   db.getDB()
     .collection(collection)
@@ -64,8 +88,7 @@ app.get("/meetings/archive", (req, res) => {
     })
 });
 
-
-app.put("/:id", (req, res) => {
+app.put("/meetings/:id", (req, res) => {
   const topicID = req.params.id;
   const userInput = req.body;
   db.getDB()
@@ -83,7 +106,7 @@ app.put("/:id", (req, res) => {
     );
 });
 
-app.put("/vote/:id", (req, res) => {
+app.put("/meetings/vote/:id", (req, res) => {
   const topicID = req.params.id;
   const isVoted = Object.values(req.cookies).indexOf(topicID.toString()) > -1
   if (!isVoted) {
@@ -104,8 +127,9 @@ app.put("/vote/:id", (req, res) => {
   }
 });
 
+// api udostępnia czas trwania hangouts
 
-app.post('/', (req, res) => {
+app.post('/meetings', (req, res) => {
   const userInput = req.body;
   db.getDB().collection(collection).insertOne(userInput, (err, result) => {
     if (err) console.log(err)
@@ -113,7 +137,7 @@ app.post('/', (req, res) => {
   })
 })
 
-app.delete('/:id', (req, res) => {
+app.delete('/meetings/:id', (req, res) => {
   const topicID = req.params.id;
   db.getDB().collection(collection).findOneAndDelete({ _id: db.getPrimaryKey(topicID) }, (err, result) => {
     if (err) console.log(err);
@@ -123,3 +147,5 @@ app.delete('/:id', (req, res) => {
     }
   })
 });
+
+// patch http, swager, jsdocs
