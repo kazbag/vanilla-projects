@@ -8,7 +8,8 @@ app.use(cookieParser());
 
 const path = require("path");
 const db = require("./db");
-const collection = "topics";
+const topicsCollection = "topics";
+const meetingsCollection = "meetings";
 
 db.connect(err => {
   if (err) {
@@ -21,9 +22,15 @@ db.connect(err => {
   }
 });
 
+// homepage
+app.get('/', (req, res) => {
+  res.send('<h1>brak frontendu</h1>')
+})
+
+// all meetings
 app.get("/meetings", (req, res) => {
   db.getDB()
-    .collection(collection)
+    .collection(meetingsCollection)
     .find({})
     .toArray((err, documents) => {
       if (err) {
@@ -34,9 +41,10 @@ app.get("/meetings", (req, res) => {
     });
 });
 
+// meetings sorted by date
 app.get("/meetings/sorted", (req, res) => {
   db.getDB()
-    .collection(collection)
+    .collection(meetingsCollection)
     .find({})
     .sort({ date: 1 })
     .toArray((err, documents) => {
@@ -48,9 +56,10 @@ app.get("/meetings/sorted", (req, res) => {
     });
 });
 
+// closest meeting
 app.get("/meetings/incoming", (req, res) => {
   db.getDB()
-    .collection(collection)
+    .collection(meetingsCollection)
     .find({ date: { $gte: new Date().getTime() } })
     .sort({ date: 1 })
     .limit(1)
@@ -62,9 +71,10 @@ app.get("/meetings/incoming", (req, res) => {
     })
 });
 
+// last meeting
 app.get("/meetings/lastone", (req, res) => {
   db.getDB()
-    .collection(collection)
+    .collection(meetingsCollection)
     .find({ date: { $lte: new Date().getTime() } })
     .sort({ date: -1 })
     .limit(1)
@@ -76,9 +86,10 @@ app.get("/meetings/lastone", (req, res) => {
     })
 });
 
+// meetings archive 
 app.get("/meetings/archive", (req, res) => {
   db.getDB()
-    .collection(collection)
+    .collection(meetingsCollection)
     .find({ date: { $lte: new Date().getTime() } })
     .toArray((err, documents) => {
       if (err)
@@ -88,11 +99,12 @@ app.get("/meetings/archive", (req, res) => {
     })
 });
 
+// update meeting
 app.put("/meetings/:id", (req, res) => {
   const topicID = req.params.id;
   const userInput = req.body;
   db.getDB()
-    .collection(collection)
+    .collection(meetingsCollection)
     .findOneAndUpdate(
       { _id: db.getPrimaryKey(topicID) },
       { $set: { topic: userInput.topic } },
@@ -106,12 +118,13 @@ app.put("/meetings/:id", (req, res) => {
     );
 });
 
-app.put("/meetings/vote/:id", (req, res) => {
+// vote for topic
+app.put("/topics/vote/:id", (req, res) => {
   const topicID = req.params.id;
   const isVoted = Object.values(req.cookies).indexOf(topicID.toString()) > -1
   if (!isVoted) {
     db.getDB()
-      .collection(collection)
+      .collection(topicsCollection)
       .findOneAndUpdate(
         { _id: db.getPrimaryKey(topicID) },
         { $inc: { votes: 1 } },
@@ -129,17 +142,19 @@ app.put("/meetings/vote/:id", (req, res) => {
 
 // api udostępnia czas trwania hangouts
 
+// add new meeting
 app.post('/meetings', (req, res) => {
   const userInput = req.body;
-  db.getDB().collection(collection).insertOne(userInput, (err, result) => {
+  db.getDB().collection(meetingsCollection).insertOne(userInput, (err, result) => {
     if (err) console.log(err)
     else res.json({ result: result, document: result.ops[0] })
   })
 })
 
+// remove meeting
 app.delete('/meetings/:id', (req, res) => {
   const topicID = req.params.id;
-  db.getDB().collection(collection).findOneAndDelete({ _id: db.getPrimaryKey(topicID) }, (err, result) => {
+  db.getDB().collection(meetingsCollection).findOneAndDelete({ _id: db.getPrimaryKey(topicID) }, (err, result) => {
     if (err) console.log(err);
     else {
       res.clearCookie(topicID.toString())
