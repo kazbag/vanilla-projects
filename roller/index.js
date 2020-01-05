@@ -11,26 +11,46 @@ const db = require("./db");
 const topicsCollection = "topics";
 const meetingsCollection = "meetings";
 
+const authRoutes = require('./routes/auth-routes')
+
 db.connect(err => {
   if (err) {
     console.log("nie można połączyć z bazą");
     process.exit(1);
   } else {
+    app.set('view engine', 'ejs')
+    app.use('/auth', authRoutes)
     app.listen(3001, () => {
       console.log("połączono z bazą");
     });
   }
 });
 
+
 // homepage
 app.get('/', (req, res) => {
-  res.send('<h1>brak frontendu</h1>')
+  res.render('home')
 })
 
 // all meetings
 app.get("/meetings", (req, res) => {
   db.getDB()
     .collection(meetingsCollection)
+    .find({})
+    .toArray((err, documents) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(documents);
+      }
+    });
+});
+
+// all topics
+
+app.get("/topics", (req, res) => {
+  db.getDB()
+    .collection(topicsCollection)
     .find({})
     .toArray((err, documents) => {
       if (err) {
