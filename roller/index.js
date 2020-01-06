@@ -12,6 +12,7 @@ const topicsCollection = "topics";
 const meetingsCollection = "meetings";
 
 const authRoutes = require('./routes/auth-routes')
+const passportSetup = require('./config/passport-setup')
 
 db.connect(err => {
   if (err) {
