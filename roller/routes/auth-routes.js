@@ -20,4 +20,5 @@ router.get("/logout", (req, res) => {
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   res.send("dostałeś callbacka");
 });
+
 module.exports = router;
