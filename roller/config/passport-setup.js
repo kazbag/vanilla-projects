@@ -12,14 +12,22 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       //callback
-      new User({
-        username: profile.displayName,
-        googleId: profile.id
-      })
-        .save()
-        .then(newUser => {
-          console.log("new user created " + newUser);
-        });
+      User.findOne({ googleId: profile.id }).then(currentUser => {
+        if (currentUser) {
+          console.log(
+            `użytkownik ${currentUser.username} już istnieje. Logowanie...`
+          );
+        } else {
+          new User({
+            username: profile.displayName,
+            googleId: profile.id
+          })
+            .save()
+            .then(newUser => {
+              console.log("new user created " + newUser);
+            });
+        }
+      });
     }
   )
 );
