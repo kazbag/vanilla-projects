@@ -3,6 +3,7 @@ const authRoutes = require("./routes/auth-routes");
 const passwordSetup = require("./config/passport-setup");
 const mongoOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
 
 const app = express();
