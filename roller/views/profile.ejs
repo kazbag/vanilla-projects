@@ -7,7 +7,12 @@
   <body>
     <nav>
       <ul>
+        <% if (user) { %>
         <li><a href="/auth/logout">Wyloguj</a></li>
+        <li><a href="/profile">Profil</a></li>
+        <% } else { %>
+        <li><a href="/auth/login">Zaloguj</a></li>
+        <% } %>
         <li><a href="/">Strona główna</a></li>
       </ul>
     </nav>
