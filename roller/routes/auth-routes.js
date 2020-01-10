@@ -14,7 +14,8 @@ router.get(
 );
 // logout
 router.get("/logout", (req, res) => {
-  res.send("wylogowywanie");
+  req.logout();
+  res.redirect("/");
 });
 // callback
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {

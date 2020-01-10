@@ -9,7 +9,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", authCheck, (req, res) => {
-  res.send(`Witaj w swoim profilu, ${req.user.username}`);
+  res.render("profile", { user: req.user });
 });
 
 module.exports = router;
