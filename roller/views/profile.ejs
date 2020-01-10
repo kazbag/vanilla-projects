@@ -20,7 +20,13 @@
       <h1>Profil</h1>
     </header>
     <main>
-      <p>Tu jest Twój profil <%=user.username%></p>
+      <p>Witaj, <%=user.username%></p>
+      <img
+        width="100px"
+        height="100px"
+        src="<%= user.thumbnail %>"
+        alt="awatar"
+      />
     </main>
   </body>
 </html>
