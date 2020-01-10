@@ -5,13 +5,22 @@ const mongoOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
+const passport = require("passport");
 
 const app = express();
 
 // set view engine
 app.set("view engine", "ejs");
-
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: keys.session.cookieKey
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 // connect to mongodb
+
 mongoose.connect(keys.mongodb.dbURI, mongoOptions, () => {
   console.log("connected to mongodb");
 });
