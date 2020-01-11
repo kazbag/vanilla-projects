@@ -8,6 +8,6 @@ const topicSchema = new Schema({
   userAdded: String
 });
 
-const Meeting = mongoose.model("meeting", meetingSchema);
+const Topic = mongoose.model("topics", topicSchema);
 
-module.exports = Meeting;
+module.exports = Topic;

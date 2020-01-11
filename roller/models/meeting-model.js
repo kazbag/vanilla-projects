@@ -9,6 +9,6 @@ const meetingSchema = new Schema({
   resourcesURL: String
 });
 
-const Meeting = mongoose.model("meeting", meetingSchema);
+const Meeting = mongoose.model("meetings", meetingSchema);
 
 module.exports = Meeting;
