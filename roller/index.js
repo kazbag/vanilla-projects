@@ -6,6 +6,7 @@ const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
 const passport = require("passport");
 const BodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 //routes
 const authRoutes = require("./routes/auth-routes");
@@ -28,6 +29,7 @@ app.use(
   })
 );
 
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -178,21 +180,11 @@ app.post("/topics", async (req, res) => {
   }
 });
 
-// get all meetings
+// get topics
 app.get("/topics", async (req, res) => {
   try {
     const result = await TopicModel.find().exec();
     res.send(result);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
-
-// get specific meeting by id
-app.get("/topics/:id", async (req, res) => {
-  try {
-    const topic = await TopicModel.findById(req.params.id).exec();
-    res.send(topic);
   } catch (err) {
     res.status(500).send(err);
   }
@@ -215,6 +207,46 @@ app.delete("/topics/:id", async (req, res) => {
   try {
     const result = await TopicModel.deleteOne({ _id: req.params.id }).exec();
     res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// get top rated topic
+app.get("/topics/top-rated", async (req, res) => {
+  try {
+    const result = await TopicModel.findOne();
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// get specific topic by id
+app.get("/topics/:id", async (req, res) => {
+  try {
+    const topic = await TopicModel.findById(req.params.id).exec();
+    res.send(topic);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// vote for topic, validation is not working probably
+app.put("/topics/vote/:id", async (req, res) => {
+  try {
+    const topicID = req.params.id;
+    const isVoted = Object.values(req.cookies).indexOf(topicID.toString()) > -1;
+    if (!isVoted) {
+      const result = await TopicModel.findOneAndUpdate(
+        { _id: topicID },
+        { $inc: { votes: 1 } }
+      ).exec();
+      res.send(result);
+    } else {
+      res.cookie(topicID, topicID, { maxAge: 24 * 60 * 60 * 1000 });
+      res.send(result);
+    }
   } catch (err) {
     res.status(500).send(err);
   }
