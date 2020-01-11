@@ -68,9 +68,43 @@ app.post("/meetings", async (req, res) => {
     res.status(500).send(err);
   }
 });
+
+// get all meetings
 app.get("/meetings", async (req, res) => {
   try {
     const result = await MeetingModel.find().exec();
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// get specific meeting by id
+app.get("/meetings/:id", async (req, res) => {
+  try {
+    const meeting = await MeetingModel.findById(req.params.id).exec();
+    res.send(meeting);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// update specific meeting
+app.put("/meetings/:id", async (req, res) => {
+  try {
+    const meeting = await MeetingModel.findById(req.params.id).exec();
+    meeting.set(req.body);
+    const result = await meeting.save();
+    res.send(result);
+  } catch {
+    res.status(500).send(err);
+  }
+});
+
+// delete specific meeting
+app.delete("/meetings/:id", async (req, res) => {
+  try {
+    const result = await MeetingModel.deleteOne({ _id: req.params.id }).exec();
     res.send(result);
   } catch (err) {
     res.status(500).send(err);
