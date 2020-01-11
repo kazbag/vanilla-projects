@@ -109,7 +109,7 @@ app.get("/meetings/incoming", async (req, res) => {
 });
 
 // get last meeting
-app.get("/meetings/lastone", async (req, res) => {
+app.get("/meetings/last-one", async (req, res) => {
   try {
     const result = await MeetingModel.find({
       date: { $lte: new Date().getTime() }
