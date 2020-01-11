@@ -79,6 +79,59 @@ app.get("/meetings", async (req, res) => {
   }
 });
 
+// get all meetings sorted by date
+app.get("/meetings/sorted", async (req, res) => {
+  try {
+    const result = await MeetingModel.find()
+      .sort({ date: 1 })
+      .exec();
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// get closest incoming meeting
+app.get("/meetings/incoming", async (req, res) => {
+  try {
+    const result = await MeetingModel.find({
+      date: { $gte: new Date().getTime() }
+    })
+      .sort({ date: 1 })
+      .limit(1)
+      .exec();
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// get last meeting
+app.get("/meetings/lastone", async (req, res) => {
+  try {
+    const result = await MeetingModel.find({
+      date: { $lte: new Date().getTime() }
+    })
+      .sort({ date: -1 })
+      .limit(1);
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// get meetings archive
+app.get("/meetings/archive", async (req, res) => {
+  try {
+    const result = await MeetingModel.find({
+      date: { $lte: new Date().getTime() }
+    });
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 // get specific meeting by id
 app.get("/meetings/:id", async (req, res) => {
   try {
