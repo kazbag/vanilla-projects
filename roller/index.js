@@ -1,12 +1,18 @@
 const express = require("express");
 const authRoutes = require("./routes/auth-routes");
-const profileRoutes = require("./routes/profile-routes");
 const passwordSetup = require("./config/passport-setup");
 const mongoOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const keys = require("./config/keys");
 const passport = require("passport");
+
+//routes
+
+const profileRoutes = require("./routes/profile-routes");
+const scheduleRoutes = require("./routes/schedule-routes");
+const topicDatabaseRoutes = require("./routes/topic-database-routes");
+const meetingsArchiveRoutes = require("./routes/meetings-archive-routes");
 
 const app = express();
 
@@ -20,8 +26,8 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-// connect to mongodb
 
+// connect to mongodb
 mongoose.connect(keys.mongodb.dbURI, mongoOptions, () => {
   console.log("connected to mongodb");
 });
@@ -29,6 +35,9 @@ mongoose.connect(keys.mongodb.dbURI, mongoOptions, () => {
 // set up routes
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
+app.use("/schedule", scheduleRoutes);
+app.use("/topic-database", topicDatabaseRoutes);
+app.use("/meetings-archive", meetingsArchiveRoutes);
 
 // create home route
 app.get("/", (req, res) => {
