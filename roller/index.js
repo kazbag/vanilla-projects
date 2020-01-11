@@ -111,3 +111,59 @@ app.delete("/meetings/:id", async (req, res) => {
   }
 });
 // #endregion
+
+// #region topics
+
+// get all topics
+app.post("/topics", async (req, res) => {
+  try {
+    const topic = new TopicModel(req.body);
+    const result = await topic.save();
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// get all meetings
+app.get("/topics", async (req, res) => {
+  try {
+    const result = await TopicModel.find().exec();
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// get specific meeting by id
+app.get("/topics/:id", async (req, res) => {
+  try {
+    const topic = await TopicModel.findById(req.params.id).exec();
+    res.send(topic);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// update specific meeting
+app.put("/topics/:id", async (req, res) => {
+  try {
+    const topic = await TopicModel.findById(req.params.id).exec();
+    topic.set(req.body);
+    const result = await topic.save();
+    res.send(result);
+  } catch {
+    res.status(500).send(err);
+  }
+});
+
+// delete specific meeting
+app.delete("/topics/:id", async (req, res) => {
+  try {
+    const result = await TopicModel.deleteOne({ _id: req.params.id }).exec();
+    res.send(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+// #endregion
