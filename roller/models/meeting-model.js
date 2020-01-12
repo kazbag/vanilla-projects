@@ -6,6 +6,7 @@ const meetingSchema = new Schema({
   topic: String,
   leader: String,
   duration: String,
+  tags: Array,
   resourcesURL: String
 });
 

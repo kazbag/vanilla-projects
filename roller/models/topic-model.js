@@ -5,7 +5,8 @@ const topicSchema = new Schema({
   topic: String,
   votes: Number,
   addedDate: Number,
-  userAdded: String
+  userAdded: String,
+  tags: Array
 });
 
 const Topic = mongoose.model("topics", topicSchema);
